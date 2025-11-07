@@ -14,5 +14,7 @@
             Email = email;
             Senha = senha;
         }
+
+        public virtual ICollection<Estagiario> Estagiarios { get; set; }  
     }
 }
