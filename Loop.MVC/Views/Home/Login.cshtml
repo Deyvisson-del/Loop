@@ -1,0 +1,22 @@
+@{
+    ViewData["Title"] = "Loop - Sistema de Pontos";
+}
+
+<link rel="stylesheet" href="~/css/style.css" />
+
+<div class="loop-container">
+    <div class="loop-card">
+        <h2>Bem-vindo ao</h2>
+        <img src="/images/marca.png" alt="Alternate Text" />
+        <p>O novo sistema de pontos<br>para os estagiários da SECTI!</p>
+
+        <form asp-action="Entrar" method="post">
+            <button type="submit" class="btn-entrar"> <a href="Login.cshtml">Entrar</a></button>
+        </form>
+                 <div class="footer">
+            <img src="~/images/LogoSecti.png" alt="SECTI" />
+        
+        </div>         
+ 
+    </div>
+</div>
