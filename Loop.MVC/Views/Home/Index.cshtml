@@ -1,8 +1,19 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Loop - Sistema de Pontos";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<link rel="stylesheet" href="~/css/style.css" />
+
+<div class="loop-container">
+    <div class="loop-card">
+        <h2>Bem-vindo ao</h2>
+        <img src="/images/marca.png" alt="Alternate Text" />
+        <p>O novo sistema de pontos<br>para os estagiários da SECTI!</p>
+
+        <form asp-action="Entrar" method="post">
+            <button type="submit" class="btn-entrar">Entrar</button>
+        </form>
+
+ 
+    </div>
 </div>
