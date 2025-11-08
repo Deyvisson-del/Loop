@@ -1,6 +1,7 @@
 /* Fundo e centralização */
 
 body {
+    overflow: hidden;
     margin: 0;
     font-family: "Manrope", sans-serif;
     background-image: url('../images/landingPage.png');
