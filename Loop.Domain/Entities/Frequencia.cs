@@ -18,12 +18,12 @@ namespace Loop.Domain.Entities
 
         public Frequencia(Guid estagiarioId, DateTime datachegada, DateTime datasaida, TimeOnly horachegada, TimeOnly horasaida, bool presente)
         {
-                EstagiarioId = estagiarioId;
-                DataChegada = datachegada;
-                DataSaida = datasaida;
-                HoraChegada = horachegada;
-                HoraSaida = horasaida;
-                Presente = presente;
+            EstagiarioId = estagiarioId;
+            DataChegada = datachegada;
+            DataSaida = datasaida;
+            HoraChegada = horachegada;
+            HoraSaida = horasaida;
+            Presente = presente;
         }
     }
 }
