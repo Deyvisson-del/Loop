@@ -46,11 +46,6 @@
         public TimeOnly? HoraSaida { get; private set; }
 
         /// <summary>
-        /// Indica se o estagiário esteve presente no dia.
-        /// </summary>
-        public bool Presente { get; private set; }
-
-        /// <summary>
         /// Total de horas trabalhadas no dia, calculado automaticamente
         /// ao registrar a saída.
         /// </summary>
@@ -79,7 +74,6 @@
 
             EstagiarioId = estagiarioId;
             HoraChegada = TimeOnly.FromDateTime(DateTime.UtcNow);
-            Presente = true;
         }
 
         /// <summary>
@@ -114,8 +108,7 @@
 
             if (HoraChegada is null)
             {
-                HoraChegada = agora;
-                Presente = true;
+                HoraChegada = agora;         
                 return;
             }
 
