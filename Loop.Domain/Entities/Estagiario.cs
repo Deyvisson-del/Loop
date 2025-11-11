@@ -46,5 +46,14 @@
         /// o estagiário e suas frequências registradas.
         /// </remarks>
         public virtual ICollection<Frequencia> Frequencias { get; set; } = new List<Frequencia>();
+
+        public void AdicionarFrequencia(Frequencia frequencia)
+        {
+            if (frequencia == null)
+            {
+                throw new ArgumentNullException(nameof(frequencia), "A frequência não pode ser nula.");
+            }
+            Frequencias.Add(frequencia);
+        }
     }
 }
