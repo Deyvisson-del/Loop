@@ -1,6 +1,4 @@
-﻿using Loop.Domain.Entities;
-
-namespace Loop.Application.DTOs
+﻿namespace Loop.Application.DTOs
 {
     public class FrequenciaDTO
     {

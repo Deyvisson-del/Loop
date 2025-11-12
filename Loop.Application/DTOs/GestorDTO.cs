@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Loop.Application.DTOs
+﻿namespace Loop.Application.DTOs
 {
-    internal class GestorDTO
+    public class GestorDTO
     {
+        public Guid id { get; set; }
+        public string Nome { get; set; } = null!;
+        public string Email { get; set; } = null!;
+        public string Senha { get; set; } = null!;
     }
 }
