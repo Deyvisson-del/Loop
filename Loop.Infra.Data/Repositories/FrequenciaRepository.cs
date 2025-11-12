@@ -1,8 +1,7 @@
 ﻿using Loop.Domain.Entities;
 using Loop.Domain.Interfaces;
 using Loop.Infra.Data.Context;
-using Microsoft.EntityFrameworkCore; // Adicione este using
-
+using Microsoft.EntityFrameworkCore; 
 namespace Loop.Infra.Data.Repositories
 {
     public class FrequenciaRepository : IFrequenciaRepository
