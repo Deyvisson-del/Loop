@@ -9,7 +9,7 @@ namespace Loop.Infra.Data
 {
     public static class DependencyInjection
     {
-       public static void AddDataInfrastructure(this IServiceCollection services, IConfiguration configuration)
+        public static void AddDataInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             // Register DbContext
             services.AddDbContext<LoopDbContext>(options =>
@@ -19,7 +19,7 @@ namespace Loop.Infra.Data
             services.AddScoped<IEstagiarioRepository, EstagiarioRepository>();
             services.AddScoped<IGestorRepository, GestorRepository>();
 
-            
+
         }
     }
 }
