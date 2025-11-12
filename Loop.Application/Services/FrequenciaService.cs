@@ -19,7 +19,7 @@ namespace Loop.Application.Services
 
         public async Task<IEnumerable<FrequenciaDTO>> ObterTodosAsync()
         {
-            var entidades = await _frequenciaRepository.ObterTodasAsync();
+            var entidades = await _frequenciaRepository.ObterTodosAsync();
             return _mapper.Map<IEnumerable<FrequenciaDTO>>(entidades);
         }
 
