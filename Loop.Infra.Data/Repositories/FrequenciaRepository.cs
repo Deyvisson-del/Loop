@@ -38,7 +38,7 @@ namespace Loop.Infra.Data.Repositories
             return await _context.Frequencias.FindAsync(id);
         }
 
-        public Task<IEnumerable<Frequencia>> ObterTodasAsync()
+        public Task<IEnumerable<Frequencia>> ObterTodosAsync()
         {
             throw new NotImplementedException();
         }
