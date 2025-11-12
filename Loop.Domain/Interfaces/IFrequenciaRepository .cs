@@ -40,7 +40,7 @@ namespace Loop.Domain.Interfaces
         /// <returns>
         /// Uma coleção enumerável contendo todas as instâncias de <see cref="Frequencia"/> persistidas.
         /// </returns>
-        Task<IEnumerable<Frequencia>> ObterTodasAsync();
+        Task<IEnumerable<Frequencia>> ObterTodasAsync(Func<object, bool> value);
 
         /// <summary>
         /// Adiciona uma nova frequência ao repositório.
