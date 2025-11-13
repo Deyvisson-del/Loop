@@ -20,6 +20,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Loop.Application\Loop.Application.csproj" />
+    <ProjectReference Include="..\Loop.Domain\Loop.Domain.csproj" />
+    <ProjectReference Include="..\Loop.Infra.Data\Loop.Infra.Data.csproj" />
     <ProjectReference Include="..\Loop.Infra.IoC\Loop.Infra.IoC.csproj" />
   </ItemGroup>
 

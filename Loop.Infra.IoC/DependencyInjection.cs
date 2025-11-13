@@ -11,7 +11,7 @@ namespace Loop.Infra.IoC
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
-            // 🔧 Adiciona o DbContext
+           
             services.AddDbContext<LoopDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"))
             );

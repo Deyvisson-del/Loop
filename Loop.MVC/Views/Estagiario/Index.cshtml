@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Loop.Application.DTOs.EstagiarioDTO>
+
+@{
+    ViewData["Title"] = "Lista de Estagiários";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var estagiario in Model)
+        {
+            <tr>
+                <td>@estagiario.Nome</td>
+                <td>@estagiario.Email</td>
+                <td>
+                    <a asp-controller="Estagiario" asp-action="Details" asp-route-id="@estagiario.Id" class="btn btn-primary btn-sm">Detalhes</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
