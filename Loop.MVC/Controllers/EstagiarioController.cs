@@ -17,7 +17,7 @@ namespace Loop.MVC.Controllers
             var estagiarios = await _estagiarioService.ObterTodosAsync();
             return View(estagiarios);
         }
-        
+
         public async Task<IActionResult> Details(Guid id)
         {
             var estagiario = await _estagiarioService.ObterPorIdAsync(id);
