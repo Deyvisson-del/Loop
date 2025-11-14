@@ -9,19 +9,14 @@ namespace Loop.Infra.IoC
 {
     public static class DependencyInjection
     {
-        public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddInfrastructure(this IServiceCollection services, string connectionString)
         {
-           
             services.AddDbContext<LoopDbContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"))
-            );
+                          options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
             services.AddScoped<IFrequenciaRepository, FrequenciaRepository>();
             services.AddScoped<IEstagiarioRepository, EstagiarioRepository>();
             services.AddScoped<IGestorRepository, GestorRepository>();
-
-            // (Depois, quando criarmos a camada Application)
-            // services.AddScoped<IFrequenciaService, FrequenciaService>();
 
             return services;
         }
