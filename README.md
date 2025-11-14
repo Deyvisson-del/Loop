@@ -38,7 +38,7 @@
 
 ## Instalação e Configuração
 ```sh
-git clone https://github.com/Deyvisson-del/ArchitectureClean.git
+git clone https://github.com/Deyvisson-del/Loop.git
 
 cd ArchitectureClean
 
