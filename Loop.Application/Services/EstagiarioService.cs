@@ -10,7 +10,7 @@ namespace Loop.Application.Services
     /// Serviço responsável por gerenciar as operações de estagiários.
     /// Implementa os métodos definidos na interface <see cref="IBaseService{T}"/>.
     /// </summary>
-    public class EstagiarioService : IBaseService<EstagiarioDTO>
+    public class EstagiarioService : IEstagiarioService
     {
         private readonly IEstagiarioRepository _estagiarioRepository;
         private readonly IMapper _mapper;
@@ -44,6 +44,13 @@ namespace Loop.Application.Services
         {
             var estagiario = _mapper.Map<Estagiario>(dto);
             return _estagiarioRepository.AtualizarAsync(estagiario);
+        }
+
+        public Task<EstagiarioDTO?> ObterPorEmailAsync(string email)
+        {
+            var estagiario =  _estagiarioRepository.ObterPorEmailAsync(email);
+            return estagiario.ContinueWith(task => 
+                task.Result == null ? null : _mapper.Map<EstagiarioDTO>(task.Result));
         }
 
         /// <summary>
