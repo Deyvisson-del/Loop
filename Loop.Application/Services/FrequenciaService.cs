@@ -16,7 +16,7 @@ namespace Loop.Application.Services
     /// e entidades de domínio (<see cref="Frequencia"/>), delegando a persistência ao 
     /// repositório <see cref="IFrequenciaRepository"/>.
     /// </remarks>
-    public class FrequenciaService : IBaseService<FrequenciaDTO>
+    public class FrequenciaService : IFrequenciaService
     {
         private readonly IFrequenciaRepository _frequenciaRepository;
         private readonly IMapper _mapper;
