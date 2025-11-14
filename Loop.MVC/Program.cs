@@ -1,19 +1,26 @@
 using Loop.Infra.Data.Context;
 using Loop.Infra.IoC;
 using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddInfrastructure(builder.Configuration);
+var configurationString = builder.Configuration.GetConnectionString("DefaultConnection");
+if (configurationString == null)
+{
+    throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+}
+builder.Services.AddInfrastructure(configurationString);
 
 builder.Services.AddDbContext<LoopDbContext>(options =>
     options.UseMySql(
         builder.Configuration.GetConnectionString("DefaultConnection"),
-        new MySqlServerVersion(new Version(8, 0, 39))
+        ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection")
+        )
     )
 );
+
 
 var app = builder.Build();
 
@@ -22,9 +29,9 @@ using (var scope = app.Services.CreateScope())
     var db = scope.ServiceProvider.GetRequiredService<LoopDbContext>();
     db.Database.Migrate();
 }
-    app.MapControllerRoute(
-        name: "default",
-        pattern: "{controller=Home}/{action=Index}/{id?}");
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
