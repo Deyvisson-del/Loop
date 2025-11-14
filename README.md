@@ -40,6 +40,8 @@
 ```sh
 git clone https://github.com/Deyvisson-del/Loop.git
 
-cd ArchitectureClean
+cd Loop
+
+dotnet run
 
 ````
