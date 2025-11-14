@@ -1,6 +1,7 @@
 using Loop.Infra.Data.Context;
 using Loop.Infra.IoC;
-using Loop.MVC.Controllers;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
