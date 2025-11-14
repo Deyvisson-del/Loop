@@ -1,4 +1,5 @@
 using Loop.Infra.IoC;
+using Loop.MVC.Controllers;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -13,6 +14,7 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+//HomeController.Index();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
