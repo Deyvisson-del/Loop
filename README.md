@@ -8,13 +8,13 @@
 
 ## Tecnologias Utilizadas
 
-- NET 8/ ASP.NET Core MVC
-- Entity Framework Core 8.0.21
-- Entity Framework Core Design 8.0.21
-- Entity Framework Core Tools 8.0.21
-- Microsoft Extensions Configuration 8.0.0
-- Microsoft Extensions Configuration FileExtensions 8.0.1
-- Microsoft Extensions Configuration Json 8.0.1
+- NET 9/ ASP.NET Core MVC
+- Entity Framework Core 9.0.21
+- Entity Framework Core Design 9.0.21
+- Entity Framework Core Tools 9.0.21
+- Microsoft Extensions Configuration 9.0.0
+- Microsoft Extensions Configuration FileExtensions 9.0.1
+- Microsoft Extensions Configuration Json 9.0.1
 - Pomelo.EntityFrameworkCore.MySql
 - Docker version 28.4.0
 
