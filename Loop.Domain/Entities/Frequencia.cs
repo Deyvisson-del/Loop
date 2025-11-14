@@ -108,7 +108,7 @@
 
             if (HoraChegada is null)
             {
-                HoraChegada = agora;         
+                HoraChegada = agora;
                 return;
             }
 
