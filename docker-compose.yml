@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  loop.web:
+    image: ${DOCKER_REGISTRY:-loop}mvc:latest
+    build:
+      context: .
+      dockerfile: Loop.MVC/Dockerfile
+      args:
+        BUILD_CONFIGURATION: ${BUILD_CONFIGURATION:-Release}
+    container_name: loop_mvc
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=localhost;Database=Banco_Loop;Port=3306;User=root,Password=root;
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+    depends_on:
+      - loop.db
+    networks:
+      - loop_network
+
+  loop.db:
+    image: "mcr.microsoft.com/mssql/server:2022-latest"
+    container_name: Banco_Loop
+    environment:
+      - SA_PASSWORD=YourPassword123!
+      - ACCEPT_EULA=Y
+      - MSSQL_PID=Express
+    ports:
+      - "1433:1433"
+    volumes:
+      - loop_sql_data:/var/opt/mssql
+    networks:
+      - loop_network
+
+volumes:
+  loop_sql_data:
+
+networks:
+  loop_network:
+    driver: bridge
