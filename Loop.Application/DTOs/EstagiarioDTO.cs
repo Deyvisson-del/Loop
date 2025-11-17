@@ -1,4 +1,6 @@
-﻿namespace Loop.Application.DTOs
+﻿using Loop.Domain.Entities;
+
+namespace Loop.Application.DTOs
 {
     /// <summary>
     /// Representa os dados de um estagiário utilizados para
@@ -25,5 +27,8 @@
         /// Endereço de e-mail do estagiário.
         /// </summary>
         public string Email { get; set; } = string.Empty;
+
+        public string Senha { get; set; } = string.Empty;
     }
-}
+    }
+

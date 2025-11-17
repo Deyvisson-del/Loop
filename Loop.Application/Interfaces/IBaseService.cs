@@ -60,7 +60,7 @@
         /// await _estagiarioService.AdicionarAsync(novoEstagiarioDto);
         /// </code>
         /// </example>
-        Task AdicionarAsync(T dto);
+        Task<T> AdicionarAsync(T dto);
 
         /// <summary>
         /// Atualiza os dados de um registro existente.

@@ -7,16 +7,15 @@
     <div class="loop-card">
         <h2>Bem-vindo ao</h2>
 
-    <a asp-controller="Estagiario" asp-action="Index" class="btn-entrar">Ver estagiários</a>
-
-
         <img src="/images/marca.png" alt="Logo Loop" class="logo" />
 
         <p>O novo sistema de pontos<br>para os estagiários da SECTI!</p>
 
         <form asp-action="Estagiario/Index" method="post">
-            <button type="submit" class="btn-entrar">Entrar</button>
+            <button asp-controller="Estagiario" asp-action="Index" type="submit" class="btn-entrar">Entrar</button>
+            <button asp-controller="Estagiario" asp-action="CadastrarEstagiario" class="btn-entrar">Cadastro de Estagiário</button>
         </form>
+       
 
         <div class="footer">
             <img src="~/images/LogoSecti.png" alt="SECTI" class="logo-secti" />
