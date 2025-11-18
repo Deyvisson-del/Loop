@@ -20,12 +20,7 @@ namespace Loop.MVC.Controllers
 
         [HttpPost]
         public async Task<IActionResult> CadastrarEstagiario(EstagiarioDTO estagiarioDTO)
-        {
-
-            Console.WriteLine($"Dados Recebidos:{estagiarioDTO.Id}");
-            Console.WriteLine($"Dados Recebidos:{estagiarioDTO.Nome}");
-            Console.WriteLine($"Dados Recebidos:{estagiarioDTO.Email}");
-
+        {   
             if (!ModelState.IsValid)
             {
                 return View(estagiarioDTO);

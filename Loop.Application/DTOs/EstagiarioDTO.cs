@@ -21,14 +21,14 @@ namespace Loop.Application.DTOs
         /// <summary>
         /// Nome completo do estagiário.
         /// </summary>
-        public string Nome { get; set; } = string.Empty;
+        public string Nome { get; set; } 
 
         /// <summary>
         /// Endereço de e-mail do estagiário.
         /// </summary>
-        public string Email { get; set; } = string.Empty;
+        public string Email { get; set; } 
 
-        public string Senha { get; set; } = string.Empty;
+        public string Senha { get; set; }
     }
     }
 
