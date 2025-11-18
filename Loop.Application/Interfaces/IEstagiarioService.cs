@@ -36,5 +36,7 @@ namespace Loop.Application.Interfaces
         /// </code>
         /// </example>
         Task<EstagiarioDTO?> ObterPorEmailAsync(string email);
+
+    
     }
 }

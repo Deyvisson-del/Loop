@@ -30,10 +30,19 @@ namespace Loop.Application.Services
         /// Adiciona um novo estagiário ao sistema.
         /// </summary>
         /// <param name="dto">Objeto DTO contendo os dados do estagiário a ser adicionado.</param>
-        public Task AdicionarAsync(EstagiarioDTO dto)
+        public async Task<EstagiarioDTO> AdicionarAsync(EstagiarioDTO dto)
         {
-            var estagiario = _mapper.Map<Estagiario>(dto);
-            return _estagiarioRepository.AdicionarAsync(estagiario);
+            var estagiarioExistente = _estagiarioRepository.ObterPorEmailAsync(dto.Email);
+            if (estagiarioExistente.Result != null)
+            {
+                throw new InvalidOperationException("Já existe um estagiário cadastrado com este e-mail.");
+            }
+            var estagiarioNovo = new Estagiario(dto.Nome, dto.Email, dto.Senha);
+
+            await _estagiarioRepository.AdicionarAsync(estagiarioNovo);
+
+            return _mapper.Map<EstagiarioDTO>(estagiarioNovo);
+
         }
 
         /// <summary>

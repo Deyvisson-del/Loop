@@ -107,10 +107,11 @@ namespace Loop.Application.Services
         /// await _frequenciaService.AdicionarAsync(dto);
         /// </code>
         /// </example>
-        public async Task AdicionarAsync(FrequenciaDTO dto)
+        public async Task<FrequenciaDTO> AdicionarAsync(FrequenciaDTO dto)
         {
             var entidade = _mapper.Map<Frequencia>(dto);
             await _frequenciaRepository.AdicionarAsync(entidade);
+            return _mapper.Map<FrequenciaDTO>(entidade);
         }
 
         /// <summary>
@@ -142,5 +143,6 @@ namespace Loop.Application.Services
         {
             await _frequenciaRepository.RemoverAsync(id);
         }
+
     }
 }
