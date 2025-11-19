@@ -4,7 +4,7 @@
 ## Configuration
 ## Stacks
 [![My Skills](https://skillicons.dev/icons?i=html,css,js)](https://skillicons.dev) 
-[![My Skills](https://skillicons.dev/icons?i=cs,dotnet,mysql,docker)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=cs,dotnet,mysql,docker,vue,vuetify)](https://skillicons.dev)
 
 ## Tecnologias Utilizadas
 
