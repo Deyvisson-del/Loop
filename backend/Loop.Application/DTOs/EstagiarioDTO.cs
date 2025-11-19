@@ -29,6 +29,14 @@ namespace Loop.Application.DTOs
         public string Email { get; set; } 
 
         public string Senha { get; set; }
+
+
+        public EstagiarioDTO(string nome, string email, string senha)
+        {
+            Nome = nome ?? throw new ArgumentNullException(nameof(nome));
+            Email = email ?? throw new ArgumentNullException(nameof(email));
+            Senha = senha ?? throw new ArgumentNullException(nameof(senha));
+        }
     }
     }
 
