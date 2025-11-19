@@ -1,0 +1,6 @@
+@Loop.API_HostAddress = http://localhost:5145
+
+GET {{Loop.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
