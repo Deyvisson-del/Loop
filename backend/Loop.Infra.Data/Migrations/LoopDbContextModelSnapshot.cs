@@ -24,9 +24,11 @@ namespace Loop.Infra.Data.Migrations
 
             modelBuilder.Entity("Loop.Domain.Entities.Estagiario", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -52,15 +54,17 @@ namespace Loop.Infra.Data.Migrations
 
             modelBuilder.Entity("Loop.Domain.Entities.Frequencia", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("Data")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<Guid>("EstagiarioId")
-                        .HasColumnType("char(36)");
+                    b.Property<int>("EstagiarioId")
+                        .HasColumnType("int");
 
                     b.Property<TimeSpan>("HoraChegada")
                         .HasColumnType("time");
@@ -81,9 +85,11 @@ namespace Loop.Infra.Data.Migrations
 
             modelBuilder.Entity("Loop.Domain.Entities.Gestor", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Email")
                         .IsRequired()

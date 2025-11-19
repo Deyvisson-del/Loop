@@ -26,7 +26,8 @@ namespace Loop.Infra.Data.Configurations
             /// <summary>
             /// Define a chave primária da entidade.
             /// </summary>
-            builder.HasKey(f => f.Id);
+            builder.Property(f => f.Id)
+                .ValueGeneratedOnAdd();
 
             /// <summary>
             /// Configura a propriedade <see cref="Frequencia.Data"/> como obrigatória.

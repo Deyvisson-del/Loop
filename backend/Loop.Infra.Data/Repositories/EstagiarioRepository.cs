@@ -32,7 +32,7 @@ namespace Loop.Infra.Data.Repositories
               .FirstOrDefaultAsync(e => e.Email.ToLower() == email.ToLower());
         }
 
-        public async Task<Estagiario?> ObterPorIdAsync(Guid id)
+        public async Task<Estagiario?> ObterPorIdAsync(int id)
         {
             return await _context.Estagiarios.FindAsync(id);
         }
@@ -44,7 +44,7 @@ namespace Loop.Infra.Data.Repositories
                            .ToListAsync();
         }
 
-        public async Task RemoverAsync(Guid id)
+        public async Task RemoverAsync(int id)
         {
             var estagiario = await _context.Estagiarios.FindAsync(id);
             if (estagiario != null)

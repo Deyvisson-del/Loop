@@ -17,7 +17,8 @@ namespace Loop.Infra.Data.Configurations
         public void Configure(EntityTypeBuilder<Estagiario> builder)
         {
             // Define a chave primária
-            builder.HasKey(e => e.Id);
+            builder.Property(e => e.Id)
+                .ValueGeneratedOnAdd();
 
             // Configura propriedades obrigatórias com tamanho máximo
             builder.Property(e => e.Nome)

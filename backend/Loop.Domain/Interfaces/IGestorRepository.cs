@@ -22,7 +22,7 @@ namespace Loop.Domain.Interfaces
         /// Uma instância de <see cref="Gestor"/> correspondente ao identificador informado,
         /// ou <c>null</c> se não for encontrada.
         /// </returns>
-        Task<Gestor?> ObterGestorPorIdAsync(Guid Id);
+        Task<Gestor?> ObterGestorPorIdAsync(int Id);
 
         /// <summary>
         /// Retorna todos os gestores cadastrados no sistema.

@@ -67,7 +67,7 @@ namespace Loop.Application.Services
         /// var frequencias = await _frequenciaService.ObterPorEstagiarioAsync(estagiarioId);
         /// </code>
         /// </example>
-        public Task<IEnumerable<FrequenciaDTO>> ObterPorEstagiarioAsync(Guid estagiarioId)
+        public Task<IEnumerable<FrequenciaDTO>> ObterPorEstagiarioAsync(int estagiarioId)
         {
             var entidades = _frequenciaRepository.ObterPorEstagiarioAsync(estagiarioId);
             return _mapper.Map<Task<IEnumerable<FrequenciaDTO>>>(entidades);
@@ -88,7 +88,7 @@ namespace Loop.Application.Services
         ///     Console.WriteLine(frequencia.HorasTrabalhadas);
         /// </code>
         /// </example>
-        public Task<FrequenciaDTO?> ObterPorIdAsync(Guid id)
+        public Task<FrequenciaDTO?> ObterPorIdAsync(int id)
         {
             var entidade = _frequenciaRepository.ObterPorIdAsync(id);
             return _mapper.Map<Task<FrequenciaDTO?>>(entidade);
@@ -139,10 +139,14 @@ namespace Loop.Application.Services
         /// await _frequenciaService.RemoverAsync(frequenciaId);
         /// </code>
         /// </example>
-        public async Task RemoverAsync(Guid id)
+        public async Task RemoverAsync(int id)
         {
             await _frequenciaRepository.RemoverAsync(id);
         }
 
+        public Task<FrequenciaDTO> AtualizarIdAsync(FrequenciaDTO dto, int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

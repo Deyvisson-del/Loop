@@ -28,7 +28,7 @@ namespace Loop.Infra.Data.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<Gestor?> ObterGestorPorIdAsync(Guid Id)
+        public Task<Gestor?> ObterGestorPorIdAsync(int Id)
         {
             throw new NotImplementedException();
         }

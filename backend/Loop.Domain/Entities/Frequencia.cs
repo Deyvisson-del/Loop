@@ -12,12 +12,12 @@
         /// <summary>
         /// Identificador único da frequência.
         /// </summary>
-        public Guid Id { get; private set; } = Guid.NewGuid();
+        public int Id { get; private set; } = default!;
 
         /// <summary>
         /// Identificador do estagiário associado a este registro de frequência.
         /// </summary>
-        public Guid EstagiarioId { get; private set; }
+        public int EstagiarioId { get; private set; }
 
         /// <summary>
         /// Navegação para o estagiário associado a este registro.
@@ -67,9 +67,9 @@
         /// Ao criar uma nova frequência, a hora de chegada é automaticamente definida
         /// como o horário atual e o status <see cref="Presente"/> é marcado como verdadeiro.
         /// </remarks>
-        public Frequencia(Guid estagiarioId)
+        public Frequencia(int estagiarioId)
         {
-            if (estagiarioId == Guid.Empty)
+            if (estagiarioId == 0)
                 throw new ArgumentNullException(nameof(estagiarioId), "Estagiário Inválido.");
 
             EstagiarioId = estagiarioId;

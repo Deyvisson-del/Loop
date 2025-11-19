@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Loop.Infra.Data.Migrations
 {
     [DbContext(typeof(LoopDbContext))]
-    [Migration("20251114175035_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20251119175748_InicialMigrations")]
+    partial class InicialMigrations
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,9 +27,11 @@ namespace Loop.Infra.Data.Migrations
 
             modelBuilder.Entity("Loop.Domain.Entities.Estagiario", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -55,15 +57,17 @@ namespace Loop.Infra.Data.Migrations
 
             modelBuilder.Entity("Loop.Domain.Entities.Frequencia", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("Data")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<Guid>("EstagiarioId")
-                        .HasColumnType("char(36)");
+                    b.Property<int>("EstagiarioId")
+                        .HasColumnType("int");
 
                     b.Property<TimeSpan>("HoraChegada")
                         .HasColumnType("time");
@@ -84,9 +88,11 @@ namespace Loop.Infra.Data.Migrations
 
             modelBuilder.Entity("Loop.Domain.Entities.Gestor", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Email")
                         .IsRequired()

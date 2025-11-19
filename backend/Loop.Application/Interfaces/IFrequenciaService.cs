@@ -31,6 +31,6 @@ namespace Loop.Application.Interfaces
         /// }
         /// </code>
         /// </example>
-        Task<IEnumerable<FrequenciaDTO>> ObterPorEstagiarioAsync(Guid estagiarioId);
+        Task<IEnumerable<FrequenciaDTO>> ObterPorEstagiarioAsync(int estagiarioId);
     }
 }
