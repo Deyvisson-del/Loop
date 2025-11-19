@@ -1,88 +1,51 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Loop.Application.DTOs;
+using Loop.Application.Interfaces;
+using Microsoft.AspNetCore.Mvc;
+
 namespace Loop.API.Controllers
 {
-
     [ApiController]
     [Route("api/[controller]")]
-    public class EstagiarioController : Controller
+    public class EstagiarioController : ControllerBase
     {
+        private readonly IEstagiarioService _estagiarioService;
 
+        public EstagiarioController(IEstagiarioService estagiarioService)
+        {
+            _estagiarioService = estagiarioService;
+        }
 
+        // POST api/estagiario
+        [HttpPost]
+        public async Task<IActionResult> CadastrarEstagiario([FromBody] EstagiarioDTO estagiarioDTO)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
+            var novoEstagiario = await _estagiarioService.AdicionarAsync(estagiarioDTO);
+
+            return CreatedAtAction(nameof(Details), new { id = novoEstagiario.Id }, novoEstagiario);
+        }
+
+        // GET api/estagiario
         [HttpGet]
-        // GET: CadastrarController
-        public ActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return Ok();
+            var estagiariosDTO = await _estagiarioService.ObterTodosAsync();
+            return Ok(estagiariosDTO);
         }
 
-        // GET: CadastrarController/Details/5
-        public ActionResult Details(int id)
+        // GET api/estagiario/{id}
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Details(int id)
         {
-            return View();
+            var estagiario = await _estagiarioService.ObterPorIdAsync(id);
+
+            if (estagiario == null)
+                return NotFound();
+
+            return Ok(estagiario);
         }
 
-        // GET: CadastrarController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: CadastrarController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: CadastrarController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: CadastrarController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: CadastrarController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: CadastrarController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }
