@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 18
-VisualStudioVersion = 18.3.11206.111
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36623.8 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loop.Application", "Loop.Application\Loop.Application.csproj", "{9CB00CCD-E595-4462-8EF4-E3DC13B4B884}"
 EndProject
@@ -14,6 +14,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loop.MVC", "Loop.MVC\Loop.MVC.csproj", "{0330E399-DE9A-490C-80D9-D6343381F0C9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loop.Tests", "Loop.Tests\Loop.Tests.csproj", "{27B9FF4D-BEDE-4F67-9E5C-68ED9A1F0582}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loop.API", "Loop.API\Loop.API.csproj", "{EC5F2C3A-911E-B7D8-FE74-C86600E8B1BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{27B9FF4D-BEDE-4F67-9E5C-68ED9A1F0582}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27B9FF4D-BEDE-4F67-9E5C-68ED9A1F0582}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27B9FF4D-BEDE-4F67-9E5C-68ED9A1F0582}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC5F2C3A-911E-B7D8-FE74-C86600E8B1BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC5F2C3A-911E-B7D8-FE74-C86600E8B1BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC5F2C3A-911E-B7D8-FE74-C86600E8B1BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC5F2C3A-911E-B7D8-FE74-C86600E8B1BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
