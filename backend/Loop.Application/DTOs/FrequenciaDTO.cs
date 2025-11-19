@@ -12,7 +12,7 @@
         /// <summary>
         /// Identificador único da frequência.
         /// </summary>
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         /// <summary>
         /// Data referente à frequência registrada.
@@ -32,6 +32,6 @@
         /// <summary>
         /// Identificador do estagiário ao qual esta frequência pertence.
         /// </summary>
-        public Guid EstagiarioId { get; set; }
+        public int EstagiarioId { get; set; }
     }
 }

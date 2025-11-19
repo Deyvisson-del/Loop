@@ -55,6 +55,11 @@ namespace Loop.Application.Services
             return _estagiarioRepository.AtualizarAsync(estagiario);
         }
 
+        public Task<EstagiarioDTO> AtualizarIdAsync(EstagiarioDTO dto, int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<EstagiarioDTO?> ObterPorEmailAsync(string email)
         {
             var estagiario =  _estagiarioRepository.ObterPorEmailAsync(email);
@@ -67,7 +72,7 @@ namespace Loop.Application.Services
         /// </summary>
         /// <param name="id">Identificador único do estagiário.</param>
         /// <returns>O DTO do estagiário correspondente, ou <c>null</c> se não encontrado.</returns>
-        public async Task<EstagiarioDTO?> ObterPorIdAsync(Guid id)
+        public async Task<EstagiarioDTO?> ObterPorIdAsync(int id)
         {
             var estagiario = await _estagiarioRepository.ObterPorIdAsync(id);
             if (estagiario == null)
@@ -89,7 +94,7 @@ namespace Loop.Application.Services
         /// Remove um estagiário do sistema com base no identificador informado.
         /// </summary>
         /// <param name="id">Identificador único do estagiário a ser removido.</param>
-        public async Task RemoverAsync(Guid id)
+        public async Task RemoverAsync(int id)
         {
             await _estagiarioRepository.RemoverAsync(id);
         }

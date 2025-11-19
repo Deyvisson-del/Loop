@@ -45,7 +45,7 @@
         /// var estagiario = await _estagiarioService.ObterPorIdAsync(estagiarioId);
         /// </code>
         /// </example>
-        Task<T?> ObterPorIdAsync(Guid id);
+        Task<T?> ObterPorIdAsync(int id);
 
         /// <summary>
         /// Adiciona um novo registro do tipo especificado.
@@ -76,6 +76,8 @@
         /// </example>
         Task AtualizarAsync(T dto);
 
+        Task<T> AtualizarIdAsync(T dto, int id);
+
         /// <summary>
         /// Remove um registro existente com base em seu identificador único.
         /// </summary>
@@ -89,6 +91,6 @@
         /// await _estagiarioService.RemoverAsync(estagiarioId);
         /// </code>
         /// </example>
-        Task RemoverAsync(Guid id);
+        Task RemoverAsync(int id);
     }
 }

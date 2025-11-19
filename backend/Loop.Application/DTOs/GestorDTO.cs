@@ -12,7 +12,7 @@
         /// <summary>
         /// Identificador único do gestor.
         /// </summary>
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         /// <summary>
         /// Nome completo do gestor.
