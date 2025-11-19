@@ -16,7 +16,7 @@ namespace Loop.Domain.Entities
         /// <summary>
         /// Identificador único do perfil.
         /// </summary>
-        public Guid Id { get; protected set; } = Guid.NewGuid();
+        public int Id { get; protected set; } = default!;
 
         /// <summary>
         /// Nome completo do usuário.

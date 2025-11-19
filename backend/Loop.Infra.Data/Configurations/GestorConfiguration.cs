@@ -26,7 +26,8 @@ namespace Loop.Infra.Data.Configurations
             /// <summary>
             /// Define a chave primária da entidade.
             /// </summary>
-            builder.HasKey(e => e.Id);
+            builder.Property(e => e.Id)
+                .ValueGeneratedOnAdd();
 
             /// <summary>
             /// Configura a propriedade <see cref="Gestor.Nome"/> como obrigatória,

@@ -22,7 +22,7 @@
         /// </exception>
         public Estagiario(string nome, string email, string senha)
         {
-            Id = Guid.NewGuid();
+            Id = default!;
             ValidarPropriedades(nome, email, senha);
             string senhaHash = GerarHash(senha);
 
