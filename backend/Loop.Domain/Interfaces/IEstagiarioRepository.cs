@@ -24,7 +24,7 @@ namespace Loop.Domain.Interfaces
         /// Uma instância de <see cref="Estagiario"/> correspondente ao identificador informado,
         /// ou <c>null</c> se não for encontrada.
         /// </returns>
-        Task<Estagiario?> ObterPorIdAsync(Guid id);
+        Task<Estagiario?> ObterPorIdAsync(int id);
 
         /// <summary>
         /// Retorna todos os estagiários cadastrados no sistema.
@@ -59,7 +59,7 @@ namespace Loop.Domain.Interfaces
         /// </summary>
         /// <param name="id">Identificador único (<see cref="Guid"/>) do estagiário a ser removido.</param>
         /// <returns>Uma tarefa representando a operação assíncrona.</returns>
-        Task RemoverAsync(Guid id);
+        Task RemoverAsync(int id);
 
         /// <summary>
         /// Obtém um estagiário com base em seu endereço de e-mail.

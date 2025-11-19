@@ -23,7 +23,7 @@ namespace Loop.Domain.Interfaces
         /// Uma instância de <see cref="Frequencia"/> correspondente ao <paramref name="id"/> informado,
         /// ou <c>null</c> se não for encontrada.
         /// </returns>
-        Task<Frequencia?> ObterPorIdAsync(Guid id);
+        Task<Frequencia?> ObterPorIdAsync(int id);
 
         /// <summary>
         /// Obtém todas as frequências associadas a um determinado estagiário.
@@ -32,7 +32,7 @@ namespace Loop.Domain.Interfaces
         /// <returns>
         /// Uma coleção enumerável de objetos <see cref="Frequencia"/> pertencentes ao estagiário informado.
         /// </returns>
-        Task<IEnumerable<Frequencia>> ObterPorEstagiarioAsync(Guid estagiarioId);
+        Task<IEnumerable<Frequencia>> ObterPorEstagiarioAsync(int estagiarioId);
 
         /// <summary>
         /// Retorna todas as frequências registradas no sistema.
@@ -67,6 +67,6 @@ namespace Loop.Domain.Interfaces
         /// </summary>
         /// <param name="id">Identificador único (<see cref="Guid"/>) da frequência a ser removida.</param>
         /// <returns>Uma tarefa representando a operação assíncrona.</returns>
-        Task RemoverAsync(Guid id);
+        Task RemoverAsync(int id);
     }
 }
