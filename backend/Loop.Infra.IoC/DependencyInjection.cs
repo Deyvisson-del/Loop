@@ -18,17 +18,13 @@ namespace Loop.Infra.IoC
             services.AddDbContext<LoopDbContext>(options =>
                           options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
-
             services.AddScoped<IEstagiarioRepository, EstagiarioRepository>();
             services.AddScoped<IFrequenciaRepository, FrequenciaRepository>();
             services.AddScoped<IGestorRepository, GestorRepository>();
            
-
             var config = TypeAdapterConfig.GlobalSettings;
             services.AddSingleton(config);
             services.AddScoped<IMapper, Mapper>();
-
-
 
             services.AddScoped<IEstagiarioService, EstagiarioService>();
             services.AddScoped<IFrequenciaService, FrequenciaService>();
