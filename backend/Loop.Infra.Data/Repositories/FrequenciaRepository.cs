@@ -26,14 +26,14 @@ namespace Loop.Infra.Data.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<Frequencia>> ObterPorEstagiarioAsync(Guid estagiarioId)
+        public async Task<IEnumerable<Frequencia>> ObterPorEstagiarioAsync(int estagiarioId)
         {
             return await _context.Set<Frequencia>()
                 .Where(f => f.EstagiarioId == estagiarioId)
                 .ToListAsync();
         }
 
-        public async Task<Frequencia?> ObterPorIdAsync(Guid id)
+        public async Task<Frequencia?> ObterPorIdAsync(int id)
         {
             return await _context.Frequencias.FindAsync(id);
         }
@@ -43,7 +43,7 @@ namespace Loop.Infra.Data.Repositories
             throw new NotImplementedException();
         }
 
-        public async Task RemoverAsync(Guid id)
+        public async Task RemoverAsync(int id)
         {
             var frequencia = _context.Frequencias.Find(id);
             if (frequencia != null)
