@@ -3,8 +3,8 @@
  Esse sistema tem o objetivo de facilitar processos do RH de empresas visando automatizar e monitorar processos de frequências de estagiários
 ## Configuration
 ## Stacks
-[![My Skills](https://skillicons.dev/icons?i=html,css,js)](https://skillicons.dev) 
-[![My Skills](https://skillicons.dev/icons?i=cs,dotnet,mysql,docker,vue,vuetify)](https://skillicons.dev)
+
+[![My Skills](https://skillicons.dev/icons?i=cs,dotnet,mysql,docker,vue,vuetify,nuxt)](https://skillicons.dev)
 
 ## Tecnologias Utilizadas
 
