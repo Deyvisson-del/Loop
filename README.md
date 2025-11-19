@@ -17,6 +17,8 @@
 - Microsoft Extensions Configuration Json 9.0.1
 - Pomelo.EntityFrameworkCore.MySql
 - Docker version 28.4.0
+- Node version v24.11.1
+- npm version 11.6.2
 
 ## Arquitetura do Projeto
 
