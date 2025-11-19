@@ -38,7 +38,7 @@ namespace Loop.MVC.Controllers
             return View(estagiariosDTO);
         }
 
-        public async Task<IActionResult> Details(Guid id)
+        public async Task<IActionResult> Details(int id)
         {
             var estagiario = await _estagiarioService.ObterPorIdAsync(id);
             if (estagiario == null) return NotFound();
