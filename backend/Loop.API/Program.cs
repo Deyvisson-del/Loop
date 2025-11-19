@@ -1,3 +1,8 @@
+using Loop.Infra.Data;
+using Loop.Infra.Data.Context;
+using Microsoft.EntityFrameworkCore;
+using Loop.Infra.IoC;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -15,6 +20,20 @@ builder.Services.AddCors(options =>
               .AllowAnyHeader();
     });
 });
+var configurationString = builder.Configuration.GetConnectionString("DefaultConnection");
+if (configurationString == null)
+{
+    throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+}
+builder.Services.AddInfrastructure(configurationString);
+
+builder.Services.AddDbContext<LoopDbContext>(options =>
+    options.UseMySql(
+        builder.Configuration.GetConnectionString("DefaultConnection"),
+        ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection")
+        )
+    )
+);
 
 var app = builder.Build();
 app.UseCors("AllowAll");

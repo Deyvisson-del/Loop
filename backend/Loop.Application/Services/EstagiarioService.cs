@@ -35,7 +35,7 @@ namespace Loop.Application.Services
             var estagiarioExistente = _estagiarioRepository.ObterPorEmailAsync(dto.Email);
             if (estagiarioExistente.Result != null)
             {
-                throw new InvalidOperationException("Já existe um estagiário cadastrado com este e-mail.");
+                throw new InvalidOperationException("Já existe um estagiário cadastrado com este email");
             }
             var estagiarioNovo = new Estagiario(dto.Nome, dto.Email, dto.Senha);
 
@@ -53,11 +53,6 @@ namespace Loop.Application.Services
         {
             var estagiario = _mapper.Map<Estagiario>(dto);
             return _estagiarioRepository.AtualizarAsync(estagiario);
-        }
-
-        public Task<EstagiarioDTO> AtualizarIdAsync(EstagiarioDTO dto, int id)
-        {
-            throw new NotImplementedException();
         }
 
         public Task<EstagiarioDTO?> ObterPorEmailAsync(string email)

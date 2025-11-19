@@ -76,8 +76,6 @@
         /// </example>
         Task AtualizarAsync(T dto);
 
-        Task<T> AtualizarIdAsync(T dto, int id);
-
         /// <summary>
         /// Remove um registro existente com base em seu identificador único.
         /// </summary>
