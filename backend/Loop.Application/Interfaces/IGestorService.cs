@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Loop.Application.Interfaces
 {
-    public interface IGestorService
+    public interface IGestorService : IBaseService<EstagiarioDTO>
     {
         Task<EstagiarioDTO?> ObterPorEmailAsync(string email);
     }

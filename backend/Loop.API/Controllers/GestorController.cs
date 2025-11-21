@@ -13,5 +13,7 @@ namespace Loop.API.Controllers
             _gestorService = gestorService;
         }
 
+
+
     }
 }
