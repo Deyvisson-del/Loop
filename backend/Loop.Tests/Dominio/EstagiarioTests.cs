@@ -1,6 +1,6 @@
 ﻿using Xunit;
 using Loop.Domain.Entities;
-namespace Loop.Tests
+namespace Loop.Tests.Dominio
 {
     public class EstagiarioTests
     {
