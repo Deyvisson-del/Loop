@@ -13,7 +13,8 @@ namespace Loop.API.Controllers
         {
             _estagiarioService = estagiarioService;
         }
-        // GET api/home
+
+        // GET api/Estagiario
         [HttpGet]
         public async Task<IActionResult> IndexAsync()
         {

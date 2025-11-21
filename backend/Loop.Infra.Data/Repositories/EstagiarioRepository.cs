@@ -19,8 +19,14 @@ namespace Loop.Infra.Data.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task AtualizarAsync(Estagiario estagiario)
+        public async Task AtualizarAsync(int id,Estagiario estagiario)
         {
+            var IdExiste = await _context.Estagiarios.AnyAsync(e => e.Id == id);
+            
+            if (!IdExiste)
+                throw new KeyNotFoundException("Estagiario não encontrado.");
+
+            id = estagiario.Id;
             _context.Estagiarios.Update(estagiario);
             await _context.SaveChangesAsync();
         }

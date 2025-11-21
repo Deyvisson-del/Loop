@@ -15,15 +15,16 @@ namespace Loop.API.Controllers
             _estagiarioService = estagiarioService;
         }
 
-
+        // POST api/estagiario
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] EstagiarioDTO estagiarioDTO)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-            var novoEstagiario = await _estagiarioService.AdicionarAsync(estagiarioDTO);
-            return CreatedAtAction(nameof(Details), new { id = novoEstagiario.Id }, novoEstagiario);
+            if (estagiarioDTO == null)
+                return BadRequest("EstagiarioDTO é nulo.");
+            var createdEstagiario = await _estagiarioService.AdicionarAsync(estagiarioDTO);
+            return CreatedAtAction(nameof(GetById), new { id = createdEstagiario.Id }, createdEstagiario);
         }
+
 
         // GET api/estagiario
         [HttpGet]
@@ -33,16 +34,39 @@ namespace Loop.API.Controllers
             return Ok(estagiariosDTO);
         }
 
-        //GET api/estagiario/{id}
+        //GET api/estagiario/1}
         [HttpGet("{id}")]
-        public async Task<IActionResult> Details(int id)
+        public async Task<IActionResult> GetById(int id)
         {
             var estagiario = await _estagiarioService.ObterPorIdAsync(id);
-
             if (estagiario == null)
                 return NotFound();
-
             return Ok(estagiario);
+        }
+
+
+        // PUT api/estagiario/1
+        [HttpPut]
+        public async Task<IActionResult> Update(int id, [FromBody] EstagiarioDTO estagiarioDTO)
+        {
+
+            if (id != estagiarioDTO.Id)
+                return BadRequest("ID inválido.");
+
+            await _estagiarioService.AtualizarAsync(id, estagiarioDTO);
+            return NoContent();
+        }
+
+
+        // DELETE api/estagiario/1
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var estagiario = await _estagiarioService.ObterPorIdAsync(id);
+            if (estagiario == null)
+                return NotFound();
+            await _estagiarioService.RemoverAsync(id);
+            return NoContent();
         }
 
     }

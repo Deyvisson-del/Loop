@@ -1,4 +1,4 @@
-using Loop.Infra.Data;
+
 using Loop.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Loop.Infra.IoC;
@@ -20,6 +20,7 @@ builder.Services.AddCors(options =>
               .AllowAnyHeader();
     });
 });
+
 var configurationString = builder.Configuration.GetConnectionString("DefaultConnection");
 if (configurationString == null)
 {
@@ -35,7 +36,9 @@ builder.Services.AddDbContext<LoopDbContext>(options =>
     )
 );
 
+
 var app = builder.Build();
+
 app.UseCors("AllowAll");
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

@@ -124,7 +124,7 @@ namespace Loop.Application.Services
         /// await _frequenciaService.AtualizarAsync(dto);
         /// </code>
         /// </example>
-        public async Task AtualizarAsync(FrequenciaDTO dto)
+        public async Task AtualizarAsync(int id,FrequenciaDTO dto)
         {
             var entidade = _mapper.Map<Frequencia>(dto);
             await _frequenciaRepository.AtualizarAsync(entidade);
