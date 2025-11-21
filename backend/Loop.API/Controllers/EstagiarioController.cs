@@ -1,7 +1,6 @@
 ﻿using Loop.Application.DTOs;
 using Loop.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace Loop.API.Controllers
 {
@@ -51,11 +50,11 @@ namespace Loop.API.Controllers
         public async Task<IActionResult> Update(int id, [FromBody] EstagiarioDTO estagiarioDTO)
         {
 
-            if(id != estagiarioDTO.Id)
+            if (id != estagiarioDTO.Id)
                 return BadRequest("ID inválido.");
 
             await _estagiarioService.AtualizarAsync(id, estagiarioDTO);
-            return NoContent();   
+            return NoContent();
         }
 
 
