@@ -4,7 +4,12 @@
 ## Configuration
 ## Stacks
 
-[![My Skills](https://skillicons.dev/icons?i=cs,dotnet,mysql,docker,postman,vue,vuetify,nuxt,tailwind)](https://skillicons.dev)
+### Back End
+[![My Skills](https://skillicons.dev/icons?i=cs,dotnet,mysql,docker,postman&perline=3)](https://skillicons.dev)
+
+
+### Front End
+[![My Skills](https://skillicons.dev/icons?i=vue,vuetify,nuxt,tailwind,figma&perline=3)](https://skillicons.dev)
 
 ## Tecnologias Utilizadas
 
