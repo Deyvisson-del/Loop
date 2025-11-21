@@ -74,7 +74,7 @@
         /// await _estagiarioService.AtualizarAsync(estagiarioAtualizadoDto);
         /// </code>
         /// </example>
-        Task AtualizarAsync(T dto);
+        Task AtualizarAsync(int id,T dto);
 
         /// <summary>
         /// Remove um registro existente com base em seu identificador único.

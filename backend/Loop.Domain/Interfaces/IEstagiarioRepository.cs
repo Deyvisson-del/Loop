@@ -52,7 +52,7 @@ namespace Loop.Domain.Interfaces
         /// <exception cref="ArgumentNullException">
         /// Lançada quando o parâmetro <paramref name="estagiario"/> é nulo.
         /// </exception>
-        Task AtualizarAsync(Estagiario estagiario);
+        Task AtualizarAsync(int id, Estagiario estagiario);
 
         /// <summary>
         /// Remove um estagiário do repositório com base em seu identificador único.

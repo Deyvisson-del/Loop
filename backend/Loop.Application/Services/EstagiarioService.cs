@@ -46,13 +46,20 @@ namespace Loop.Application.Services
         }
 
         /// <summary>
-        /// Atualiza os dados de um estagiário existente.
+        /// Atualiza os dados de um estagiário existente.m
         /// </summary>
         /// <param name="dto">Objeto DTO contendo os novos dados do estagiário.</param>
-        public Task AtualizarAsync(EstagiarioDTO dto)
+        public Task AtualizarAsync(int id,EstagiarioDTO dto)
         {
+            var estagiarioExistente = _estagiarioRepository.ObterPorIdAsync(id);
+
+            if (id != estagiarioExistente.Id)
+            {
+                throw new ArgumentException("O ID fornecido não corresponde ao ID do estagiário.");
+            }
+
             var estagiario = _mapper.Map<Estagiario>(dto);
-            return _estagiarioRepository.AtualizarAsync(estagiario);
+            return _estagiarioRepository.AtualizarAsync(id,estagiario);
         }
 
         public Task<EstagiarioDTO?> ObterPorEmailAsync(string email)
