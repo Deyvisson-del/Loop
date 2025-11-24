@@ -15,7 +15,7 @@ namespace Loop.API.Controllers
             _estagiarioService = estagiarioService;
         }
 
-       
+
 
         // GET api/estagiario
         [HttpGet]

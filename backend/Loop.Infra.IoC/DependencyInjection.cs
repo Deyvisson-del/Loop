@@ -21,7 +21,7 @@ namespace Loop.Infra.IoC
             services.AddScoped<IEstagiarioRepository, EstagiarioRepository>();
             services.AddScoped<IFrequenciaRepository, FrequenciaRepository>();
             services.AddScoped<IGestorRepository, GestorRepository>();
-           
+
             var config = TypeAdapterConfig.GlobalSettings;
             services.AddSingleton(config);
             services.AddScoped<IMapper, Mapper>();

@@ -20,7 +20,7 @@ namespace Loop.MVC.Controllers
 
         [HttpPost]
         public async Task<IActionResult> CadastrarEstagiario(EstagiarioDTO estagiarioDTO)
-        {   
+        {
             if (!ModelState.IsValid)
             {
                 return View(estagiarioDTO);

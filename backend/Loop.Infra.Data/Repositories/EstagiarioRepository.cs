@@ -15,7 +15,7 @@ namespace Loop.Infra.Data.Repositories
 
         public async Task<Frequencia?> BaterPonto(Frequencia frequencia)
         {
-            _context.Frequencias.Add(frequencia);  
+            _context.Frequencias.Add(frequencia);
             await _context.SaveChangesAsync();
             return frequencia;
         }

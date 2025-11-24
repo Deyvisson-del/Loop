@@ -49,7 +49,7 @@ namespace Loop.Application.Services
         /// Atualiza os dados de um estagiário existente.m
         /// </summary>
         /// <param name="dto">Objeto DTO contendo os novos dados do estagiário.</param>
-        public Task AtualizarAsync(int id,EstagiarioDTO dto)
+        public Task AtualizarAsync(int id, EstagiarioDTO dto)
         {
             var estagiarioExistente = _estagiarioRepository.ObterPorIdAsync(id);
 
@@ -59,13 +59,13 @@ namespace Loop.Application.Services
             }
 
             var estagiario = _mapper.Map<Estagiario>(dto);
-            return _estagiarioRepository.AtualizarAsync(id,estagiario);
+            return _estagiarioRepository.AtualizarAsync(id, estagiario);
         }
 
         public Task<EstagiarioDTO?> ObterPorEmailAsync(string email)
         {
-            var estagiario =  _estagiarioRepository.ObterPorEmailAsync(email);
-            return estagiario.ContinueWith(task => 
+            var estagiario = _estagiarioRepository.ObterPorEmailAsync(email);
+            return estagiario.ContinueWith(task =>
                 task.Result == null ? null : _mapper.Map<EstagiarioDTO>(task.Result));
         }
 
