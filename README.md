@@ -27,6 +27,7 @@
 
 ## Arquitetura do Projeto
 
+ 📁 **Backend** </br></br>
 📁 **Loop.sln** </br>
 ├─ 🧩 **Loop.Domain** → Entidades e interfaces  
 ├─ 🧠 **Loop.Application** → Casos de uso e DTOs  
@@ -36,10 +37,22 @@
 │  └─ Repositories  
 ├─ ⚙️ **Loop.Infra.IoC** → Configuração de DI  
 │  └─ `DependencyInjection.cs`  
-└─ 💻 **Loop.MVC** → Apresentação  
+└─ 💻 **Loop.API** → Apresentação  
    ├─ `appsettings.json`  
    ├─ `Program.cs`  
    └─ Controllers/
+
+   📁 **Frontend** </br>  
+├─  **public** → Casos de uso e DTOs  
+├─  **src** → DbContext e Repositórios  
+│  ├─ assets → `AppDbContext.cs`  
+│  ├─ components  
+│  ├─ stores
+│  ├─ views
+│  └─ router  
+│  ├─ App.vue
+│  └─ main.js 
+└─ Index.html 
 
 
 
@@ -47,8 +60,14 @@
 ```sh
 git clone https://github.com/Deyvisson-del/Loop.git
 
-cd Loop
+cd Loop/backend/Loop.API/
 
 dotnet run
+
+cd ../..
+
+cd frontend
+
+npm run dev
 
 ````
