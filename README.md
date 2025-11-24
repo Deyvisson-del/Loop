@@ -1,6 +1,6 @@
 # Loop  (Em desenvolvimento)
 ## _Gerenciador de frequências de estagiários_
- Esse sistema tem o objetivo de facilitar processos do RH de empresas visando automatizar e monitorar processos de frequências de estagiários
+Este projeto é um sistema de gerenciamento de frequência desenvolvido para auxiliar o setor de Recursos Humanos no controle de estagiários, oferecendo uma visão organizada e automatizada da jornada de atividades. Ele centraliza e simplifica processos como registro de presença, banco de horas, contabilização de horas trabalhadas, controle de férias, entre outros
 ## Configuration
 ## Stacks
 
