@@ -92,6 +92,11 @@ namespace Loop.Application.Services
             return _mapper.Map<IEnumerable<EstagiarioDTO>>(estagiarios);
         }
 
+        public Task<FrequenciaDTO> RagistrarPonto(FrequenciaDTO frequenciaDTO)
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// Remove um estagiário do sistema com base no identificador informado.
         /// </summary>

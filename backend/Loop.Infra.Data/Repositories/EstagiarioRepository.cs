@@ -1,7 +1,6 @@
 ﻿using Loop.Domain.Entities;
 using Loop.Domain.Interfaces;
 using Loop.Infra.Data.Context;
-using Microsoft.EntityFrameworkCore;
 
 namespace Loop.Infra.Data.Repositories
 {
@@ -13,51 +12,23 @@ namespace Loop.Infra.Data.Repositories
         {
             _context = context;
         }
-        public async Task AdicionarAsync(Estagiario estagiario)
+
+        public async Task<Frequencia?> BaterPonto(Frequencia frequencia)
         {
-            await _context.Estagiarios.AddAsync(estagiario);
+            _context.Frequencias.Add(frequencia);  
             await _context.SaveChangesAsync();
+            return frequencia;
         }
 
-        public async Task AtualizarAsync(int id,Estagiario estagiario)
+        public Task SolicitarAjusteCargaHoraria(int estagiarioId, string justificativa, TimeOnly horaCorrigida)
         {
-            var IdExiste = await _context.Estagiarios.AnyAsync(e => e.Id == id);
-            
-            if (!IdExiste)
-                throw new KeyNotFoundException("Estagiario não encontrado.");
-
-            id = estagiario.Id;
-            _context.Estagiarios.Update(estagiario);
-            await _context.SaveChangesAsync();
+            throw new NotImplementedException();
         }
 
-        public async Task<Estagiario?> ObterPorEmailAsync(string email)
+        public Task<IEnumerable<Frequencia?>> VisualizarRelatorio()
         {
-            return await _context.Estagiarios
-              .AsNoTracking()
-              .FirstOrDefaultAsync(e => e.Email.ToLower() == email.ToLower());
-        }
-
-        public async Task<Estagiario?> ObterPorIdAsync(int id)
-        {
-            return await _context.Estagiarios.FindAsync(id);
-        }
-
-        public async Task<IEnumerable<Estagiario>> ObterTodosAsync()
-        {
-            return await _context.Estagiarios
-                           .AsNoTracking()
-                           .ToListAsync();
-        }
-
-        public async Task RemoverAsync(int id)
-        {
-            var estagiario = await _context.Estagiarios.FindAsync(id);
-            if (estagiario != null)
-            {
-                _context.Estagiarios.Remove(estagiario);
-                await _context.SaveChangesAsync();
-            }
+            throw new NotImplementedException();
         }
     }
+
 }

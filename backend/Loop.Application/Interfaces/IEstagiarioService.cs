@@ -37,6 +37,8 @@ namespace Loop.Application.Interfaces
         /// </example>
         Task<EstagiarioDTO?> ObterPorEmailAsync(string email);
 
+        Task<FrequenciaDTO> RagistrarPonto(FrequenciaDTO frequenciaDTO);
+
     
     }
 }
