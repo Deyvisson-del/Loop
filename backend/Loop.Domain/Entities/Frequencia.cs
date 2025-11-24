@@ -73,6 +73,7 @@
                 throw new ArgumentNullException(nameof(estagiarioId), "Estagiário Inválido.");
 
             EstagiarioId = estagiarioId;
+            DateTime dateTime = DateTime.UtcNow;
             HoraChegada = TimeOnly.FromDateTime(DateTime.UtcNow);
         }
 
