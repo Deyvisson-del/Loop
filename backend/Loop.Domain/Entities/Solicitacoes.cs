@@ -49,7 +49,7 @@ namespace Loop.Domain.Entities
             RespostaData = DateTime.Now;
         }
 
-        public void AtualizarHorarios(DateTime? entrada, DateTime? saida,)
+        public void AtualizarHorarios(DateTime? entrada, DateTime? saida)
         {
             if (Status != StatusSolicitacao.PE)
                 throw new InvalidOperationException("Solicitação já processada.");
