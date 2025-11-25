@@ -18,7 +18,7 @@ namespace Loop.Domain.Entities
         public string? RespostaGestor { get; set; }
         public DateTime? RespostaData { get; set; }
 
-        public Solicitacao(){}
+        public Solicitacao() { }
 
         public Solicitacao(int estagiarioId, int frequenciaId, string justificativa, DateTime? novaEntrada, DateTime? novaSaida)
         {
