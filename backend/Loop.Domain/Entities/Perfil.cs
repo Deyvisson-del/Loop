@@ -1,22 +1,13 @@
 ﻿using System.Security.Cryptography;
-using System.Text;
 using System.Text.RegularExpressions;
 
 namespace Loop.Domain.Entities
 {
-
     public abstract class Perfil
     {
-    
-        public int Id { get; protected set; } 
-
-        
+        public int Id { get; protected set; }
         public string Nome { get; protected set; } = string.Empty;
-
-      
         public string Email { get; protected set; } = string.Empty;
-
-        
         public string SenhaHash { get; protected set; } = string.Empty;
 
         protected void DefinirSenha(string senha)
@@ -38,7 +29,6 @@ namespace Loop.Domain.Entities
 
             if (!Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
                 throw new ArgumentException("O e-mail está em formato inválido.", nameof(email));
-
         }
 
         public bool VerificarSenha(string senhaDigitada)
@@ -56,10 +46,9 @@ namespace Loop.Domain.Entities
             byte[] hash = pbkdf2.GetBytes(32);
 
             return $"{iterations}:{Convert.ToBase64String(salt)}:{Convert.ToBase64String(hash)}";
-
         }
 
-        private static bool VerificarHashSeguro(string senhaDigitada,string senhaArmazenada)
+        private static bool VerificarHashSeguro(string senhaDigitada, string senhaArmazenada)
         {
             var partes = senhaArmazenada.Split(':');
             int iterations = int.Parse(partes[0]);
