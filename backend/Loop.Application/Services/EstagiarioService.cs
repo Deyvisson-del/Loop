@@ -12,7 +12,7 @@ namespace Loop.Application.Services
         private readonly IEstagiarioRepository _estagiarioRepository;
         private readonly IMapper _mapper;
 
-
+       
         public EstagiarioService(IEstagiarioRepository estagiarioRepository, IMapper mapper)
         {
             _estagiarioRepository = estagiarioRepository;
@@ -21,7 +21,7 @@ namespace Loop.Application.Services
 
         public Task<Frequencia?> BaterPonto(Frequencia frequencia)
         {
-
+            throw new NotImplementedException();
         }
 
         public Task<EstagiarioDTO?> ObterPorEmailAsync(string email)

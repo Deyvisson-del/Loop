@@ -22,10 +22,10 @@ namespace Loop.Infra.Data.Configurations
             builder.Property(e => e.Status)
                 .IsRequired();
 
-            builder.Property(s => s.NovaEntrada) 
+            builder.Property(s => s.HorarioEntrada) 
                 .IsRequired(false);
 
-            builder.Property(s => s.NovaSaida) 
+            builder.Property(s => s.HorarioSaida) 
                 .IsRequired(false);
 
             builder.Property(s => s.RespostaGestor)

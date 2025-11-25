@@ -6,8 +6,8 @@ namespace Loop.Domain.Interfaces
     {
         Task<Frequencia?> BaterPonto(Frequencia frequencia);
 
-        Task SolicitarAjusteCargaHoraria(int estagiarioId, string justificativa, TimeOnly horaCorrigida);
+        Task SolicitarAjusteCargaHoraria(int estagiarioId, string justificativa, TimeSpan novaHoraEntrada, TimeSpan novaHoraSaida);
 
-        Task<IEnumerable<Frequencia?>> VisualizarRelatorio();
+        Task<IEnumerable<Frequencia?>> VisualizarRelatorio(int estagiarioId);
     }
 }

@@ -14,7 +14,7 @@ namespace Loop.Infra.Data.Context
         public DbSet<Frequencia> Frequencias { get; set; }
         public DbSet<Gestor> Gestores { get; set; }
         public DbSet<Solicitacao> Solicitacoes { get; set; }
-        public DbSet<Administrador> Administradors { get; set; }
+        public DbSet<Administrador> Administradores { get; set; }
   
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
