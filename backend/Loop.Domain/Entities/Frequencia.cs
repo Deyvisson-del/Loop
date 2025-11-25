@@ -1,81 +1,54 @@
 ﻿namespace Loop.Domain.Entities
 {
-
     public class Frequencia
-    
+    {
         public int Id { get; private set; } = default!;
-
-   
         public int EstagiarioId { get; private set; }
-
-   
         public Estagiario Estagiario { get; private set; } = null!;
 
-        public DateTime? Data { get; private set; } = DateTime.UtcNow.Date;
-
-       
+        public DateTime? Data { get; private set; }
         public TimeSpan? HoraChegada { get; private set; }
-
-        
         public TimeSpan? HoraSaida { get; private set; }
+        public TimeSpan HorasTrabalhadas { get; private set; }
+        public Frequencia() { }
 
-        public double HorasTrabalhadas { get; private set; }
-
-      
-        protected Frequencia() { }
-
-        public Frequencia(int estagiarioId)
+        public Frequencia(int estagiarioId, DateTime data)
         {
-            if (estagiarioId == 0)
-                throw new ArgumentNullException(nameof(estagiarioId), "Estagiário Inválido.");
-
             EstagiarioId = estagiarioId;
-            DateTime dateTime = DateTime.UtcNow;
-            HoraChegada = DateTime.UtcNow;
+            Data = data.Date;
         }
 
-      
-        public void RegistrarPonto()
+        public void RegistrarEntrada(DateTime entrada)
         {
-            var agora = TimeOnly.FromDateTime(DateTime.UtcNow);
+            if (HoraChegada != null) throw new InvalidOperationException("Entrada já registrada. ");
 
-            if (agora < new TimeOnly(8, 0) || agora > new TimeOnly(17, 0))
-                throw new InvalidOperationException("Fora do horário permitido de trabalho.");
-
-            if (HoraChegada is null)
-            {
-                HoraChegada = agora;
-                return;
-            }
-
-            if (HoraSaida is null)
-            {
-                if (Math.Abs(agora.ToTimeSpan().TotalMinutes - HoraChegada.Value.ToTimeSpan().TotalMinutes) < 1)
-                    throw new InvalidOperationException("Não é possível registrar a saída com menos de 1 minuto após a entrada.");
-
-                HoraSaida = agora;
-                HorasTrabalhadas = CalcularHorasTrabalhadas();
-                return;
-            }
-
-            throw new InvalidOperationException("Ponto já registrado para o dia de hoje.");
+            Data = entrada.Date;
+            HoraChegada = entrada.TimeOfDay;
         }
-
-        
-        private double CalcularHorasTrabalhadas()
+        public void RegistrarSaida(DateTime saida)
         {
-            if (HoraChegada is null || HoraSaida is null)
-                return 0;
+            if (HoraChegada == null) throw new InvalidOperationException("Não e possivel registrar uma saída sem entrada.");
 
-            var diferenca = HoraSaida.Value.ToTimeSpan() - HoraChegada.Value.ToTimeSpan();
-            return Math.Round(diferenca.TotalHours, 2);
+            if (HoraSaida != null) throw new InvalidOperationException("Saída já registrada.");
+
+            HoraSaida = saida.TimeOfDay;
+
+            CalcularHorasTrabalhadas();
         }
-
-        public void AtualizarHoras(TimeOnly novaEntrada, TimeOnly novaSaida)
+        public void AjustarPonto(TimeSpan novaEntrada, TimeSpan novaSaida)
         {
             HoraChegada = novaEntrada;
             HoraSaida = novaSaida;
-            HorasTrabalhadas = CalcularHorasTrabalhadas();
+
+            CalcularHorasTrabalhadas();
         }
+        private void CalcularHorasTrabalhadas()
+        {
+            if (HoraChegada != null && HoraSaida != null)
+            {
+                HorasTrabalhadas = HoraSaida.Value - HoraChegada.Value;
+            }
+        }
+
     }
 }

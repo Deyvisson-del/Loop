@@ -1,8 +1,9 @@
 ﻿namespace Loop.Domain.Entities
 {
-    public class Estagiario : Perfil
+    public class Administrador : Perfil
     {
-        public Estagiario(string nome, string email, string senha)
+
+        public Administrador(string nome, string email, string senha)
         {
             ValidarPropriedades(nome, email);
             DefinirSenha(senha);
@@ -11,9 +12,6 @@
             Email = email;
         }
 
-        public Estagiario()
-        {
-        }
-
+        public Administrador() { }
     }
 }
