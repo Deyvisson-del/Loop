@@ -2,7 +2,7 @@
 
 namespace Loop.Domain.Entities
 {
-    public class Solicitacoes
+    public class Solicitacao
     {
 
         public int Id { get; set; }
@@ -18,9 +18,9 @@ namespace Loop.Domain.Entities
         public string? RespostaGestor { get; set; }
         public DateTime? RespostaData { get; set; }
 
-        public Solicitacoes(){}
+        public Solicitacao(){}
 
-        public Solicitacoes(int estagiarioId, int frequenciaId, string justificativa, DateTime? novaEntrada, DateTime? novaSaida)
+        public Solicitacao(int estagiarioId, int frequenciaId, string justificativa, DateTime? novaEntrada, DateTime? novaSaida)
         {
             EstagiarioId = estagiarioId;
             FrequenciaId = frequenciaId;
