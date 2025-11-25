@@ -8,7 +8,7 @@ namespace Loop.Domain.Interfaces
         Task<Solicitacao> ObterSolicitacaoPorId(int id);
         Task<IEnumerable<Solicitacao>> ObterPorEstagiarioIdAsync(int estagiarioId);
         Task<IEnumerable<Solicitacao>> ObterPorPendentesAsync();
-        Task AtualizarAsync(Solicitacao solicitacao);
+        Task AtualizarAsync(Solicitacao);
 
     }
 }
