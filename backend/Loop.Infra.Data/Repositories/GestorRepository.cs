@@ -1,6 +1,7 @@
 ﻿using Loop.Domain.Entities;
 using Loop.Domain.Interfaces;
 using Loop.Infra.Data.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace Loop.Infra.Data.Repositories
 {
@@ -13,32 +14,37 @@ namespace Loop.Infra.Data.Repositories
             _context = context;
         }
 
-        public Task AdicionarGestorAsync(Gestor gestor)
+        public Task AtualizarEstagiarioAsync(Estagiario estagiario)
         {
             throw new NotImplementedException();
         }
 
-        public Task AtualizarGestorAsync(Gestor gestor)
+        public Task CriarEstagiarioAsync(Estagiario estagiario)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Gestor?> ObterGestorPorEmailAsync(string email)
+        public Task<Estagiario?> ObterEstagiarioPorEmailAsync(string email)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Gestor?> ObterGestorPorIdAsync(int Id)
+        public Task<Estagiario?> ObterEstagiarioPorIdAsync(int Id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<Gestor>> ObterTodosAsync()
+        public Task<IEnumerable<Estagiario>> ObterTodosEstagiariosAsync()
         {
             throw new NotImplementedException();
         }
 
-        public Task RemoverGestorAsync(Gestor gestor)
+        public Task RemoverEstagiarioAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<Frequencia>> VisualizarRelatorioEstagiarios(int id)
         {
             throw new NotImplementedException();
         }

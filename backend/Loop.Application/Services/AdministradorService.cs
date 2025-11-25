@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Loop.Application.Services
 {
-    public class FrequenciaService
+    public class AdministradorService
     {
     }
 }

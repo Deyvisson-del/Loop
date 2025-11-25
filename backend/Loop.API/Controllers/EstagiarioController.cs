@@ -15,15 +15,6 @@ namespace Loop.API.Controllers
             _estagiarioService = estagiarioService;
         }
 
-        // POST api/estagiario
-        [HttpPost]
-        public async Task<IActionResult> Create([FromBody] EstagiarioDTO estagiarioDTO)
-        {
-            if (estagiarioDTO == null)
-                return BadRequest("EstagiarioDTO é nulo.");
-            var createdEstagiario = await _estagiarioService.AdicionarAsync(estagiarioDTO);
-            return CreatedAtAction(nameof(GetById), new { id = createdEstagiario.Id }, createdEstagiario);
-        }
 
 
         // GET api/estagiario

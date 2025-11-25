@@ -2,7 +2,7 @@
 
 namespace Loop.Application.Interfaces
 {
-    public interface IFrequenciaService
+    public interface IAdministradorService
     {
     }
 }

@@ -2,6 +2,7 @@
 using Loop.Domain.Interfaces;
 using Loop.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualBasic;
 
 namespace Loop.Infra.Data.Repositories
 {
@@ -13,51 +14,36 @@ namespace Loop.Infra.Data.Repositories
         {
             _context = context;
         }
-        public async Task AdicionarAsync(Estagiario estagiario)
+
+        public async Task<Frequencia?> BaterPonto(Frequencia frequencia)
         {
-            await _context.Estagiarios.AddAsync(estagiario);
+            await _context.Frequencias.AddAsync(frequencia);
             await _context.SaveChangesAsync();
+            return frequencia;
         }
 
-        public async Task AtualizarAsync(int id,Estagiario estagiario)
+        public async Task SolicitarAjusteCargaHoraria(int estagiarioId, string justificativa, TimeSpan novaHoraEntrada, TimeSpan novaHoraSaida)
         {
-            var IdExiste = await _context.Estagiarios.AnyAsync(e => e.Id == id);
-            
-            if (!IdExiste)
-                throw new KeyNotFoundException("Estagiario não encontrado.");
-
-            id = estagiario.Id;
-            _context.Estagiarios.Update(estagiario);
-            await _context.SaveChangesAsync();
-        }
-
-        public async Task<Estagiario?> ObterPorEmailAsync(string email)
-        {
-            return await _context.Estagiarios
-              .AsNoTracking()
-              .FirstOrDefaultAsync(e => e.Email.ToLower() == email.ToLower());
-        }
-
-        public async Task<Estagiario?> ObterPorIdAsync(int id)
-        {
-            return await _context.Estagiarios.FindAsync(id);
-        }
-
-        public async Task<IEnumerable<Estagiario>> ObterTodosAsync()
-        {
-            return await _context.Estagiarios
-                           .AsNoTracking()
-                           .ToListAsync();
-        }
-
-        public async Task RemoverAsync(int id)
-        {
-            var estagiario = await _context.Estagiarios.FindAsync(id);
-            if (estagiario != null)
-            {
-                _context.Estagiarios.Remove(estagiario);
-                await _context.SaveChangesAsync();
+   
+                var solicitacao = new Solicitacao
+                {
+                    EstagiarioId = estagiarioId,
+                    Justificativa = justificativa,
+                    NovaEntrada = novaHoraEntrada,
+                    NovaSaida =
+                    DataSolicitacao = DateTime.UtcNow,
+                    Status = "Pendente"
+                };
             }
+
+        public async Task<IEnumerable<Frequencia?>> VisualizarRelatorio(int estagiarioId)
+        {
+            return await _context.Frequencias
+                .Where(f => f.EstagiarioId == estagiarioId)
+                .OrderByDescending(f => f.Data)
+                .AsNoTracking()
+                .ToListAsync();
         }
     }
+
 }

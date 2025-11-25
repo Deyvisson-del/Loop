@@ -15,10 +15,11 @@ namespace Loop.Infra.Data
                 options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)
                     ));
 
-            services.AddScoped<IFrequenciaRepository, FrequenciaRepository>();
             services.AddScoped<IEstagiarioRepository, EstagiarioRepository>();
             services.AddScoped<IGestorRepository, GestorRepository>();
-
+            services.AddScoped<IAdministradorRepository, AdministradorRepository>();
+            services.AddScoped<ISolicitacaoRepository, SolicitacaoRepository>();
+            services.AddScoped<IFrequenciaRepository, FrequenciaRepository>();
 
         }
     }

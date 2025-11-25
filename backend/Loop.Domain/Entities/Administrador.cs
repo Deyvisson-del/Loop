@@ -1,9 +1,9 @@
 ﻿namespace Loop.Domain.Entities
 {
-    public class Gestor : Perfil
+    public class Administrador : Perfil
     {
 
-        public Gestor(string nome, string email, string senha)
+        public Administrador(string nome, string email, string senha)
         {
             ValidarPropriedades(nome, email);
             DefinirSenha(senha);
@@ -12,9 +12,6 @@
             Email = email;
         }
 
-        public Gestor()
-        {
-        }
-
+        public Administrador() { }
     }
 }
