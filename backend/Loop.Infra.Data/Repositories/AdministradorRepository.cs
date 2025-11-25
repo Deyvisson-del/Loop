@@ -5,9 +5,9 @@ namespace Loop.Infra.Data.Repositories
 {
     public class AdministradorRepository : IAdministradorRepository
     {
-        public async Task CriarAsync(Administrador administrador)
+        public Task CriarAsync(Administrador administrador)
         {
-            throw new NotImplementedException(); 
+            throw new NotImplementedException();
         }
 
         public Task<Administrador?> ObterAdminiadorPorEmail(string email)
