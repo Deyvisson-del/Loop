@@ -7,13 +7,11 @@ namespace Loop.Domain.Entities
 
         public int Id { get; set; }
         public int EstagiarioId { get; set; }
-        public Estagiario Estagiario { get; set; }
         public int FrequenciaId { get; set; }
-        public Frequencia Frequencia { get; set; }
         public DateTime DataSolicitacao { get; set; } = DateTime.Now;
         public string Justificativa { get; set; }
-        public DateTime? NovaEntrada { get; set; }
-        public DateTime? NovaSaida { get; set; }
+        public DateTime? HorarioEntrada { get; set; }
+        public DateTime? HorarioSaida { get; set; }
         public StatusSolicitacao Status { get; set; } = StatusSolicitacao.PE;
         public string? RespostaGestor { get; set; }
         public DateTime? RespostaData { get; set; }
