@@ -1,6 +1,4 @@
-﻿
-
-using Loop.Domain.Entities;
+﻿using Loop.Domain.Entities;
 
 namespace Loop.Domain.Interfaces
 {
