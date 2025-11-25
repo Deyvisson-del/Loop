@@ -13,11 +13,9 @@ namespace Loop.Infra.Data.Repositories
             _context = context;
         }
 
-        public async Task<Frequencia?> BaterPonto(Frequencia frequencia)
+        public Task<Frequencia?> BaterPonto(Frequencia frequencia)
         {
-            _context.Frequencias.Add(frequencia);
-            await _context.SaveChangesAsync();
-            return frequencia;
+            throw new NotImplementedException();
         }
 
         public Task SolicitarAjusteCargaHoraria(int estagiarioId, string justificativa, TimeOnly horaCorrigida)

@@ -14,55 +14,39 @@ namespace Loop.Infra.Data.Repositories
             _context = context;
         }
 
-        public async Task AtualizarEstagiarioAsync(Estagiario estagiario)
+        public Task AtualizarEstagiarioAsync(Estagiario estagiario)
         {
-            _context.Estagiarios.Update(estagiario);
-            await _context.SaveChangesAsync();
+            throw new NotImplementedException();
         }
 
-        public async Task CriarEstagiarioAsync(Estagiario estagiario)
+        public Task CriarEstagiarioAsync(Estagiario estagiario)
         {
-            _context.Estagiarios.Add(estagiario);
-            await _context.SaveChangesAsync();
+            throw new NotImplementedException();
         }
 
-        public async Task<Estagiario?> ObterEstagiarioPorEmailAsync(string email)
+        public Task<Estagiario?> ObterEstagiarioPorEmailAsync(string email)
         {
-            var estagiario = _context.Estagiarios.FindAsync(email);
-            if (estagiario == null) return (null);
-
-            return await estagiario;
-
+            throw new NotImplementedException();
         }
 
-        public async Task<Estagiario?> ObterEstagiarioPorIdAsync(int id)
+        public Task<Estagiario?> ObterEstagiarioPorIdAsync(int Id)
         {
-            var estagiario = _context.Estagiarios.FindAsync(id);
-            if (estagiario == null) return null;
-
-            return await _context.Estagiarios.FindAsync(id);
-
+            throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<Estagiario>> ObterTodosEstagiariosAsync()
+        public Task<IEnumerable<Estagiario>> ObterTodosEstagiariosAsync()
         {
-            return await _context.Estagiarios
-                .Include(e => e.Frequencias)
-                .ToListAsync();
+            throw new NotImplementedException();
         }
 
-        public async Task RemoverEstagiarioAsync(int id)
+        public Task RemoverEstagiarioAsync(int id)
         {
-            var estagiario = _context.Estagiarios.FindAsync(id);
-            if (estagiario == null) return;
-
-            _context.Estagiarios.Remove(estagiario.Result);
-            await _context.SaveChangesAsync();
+            throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<Frequencia>> VisualizarRelatorioEstagiarios(int id)
+        public Task<IEnumerable<Frequencia>> VisualizarRelatorioEstagiarios(int id)
         {
-            return await _context.Frequencias.Where(f => f.EstagiarioId == id).ToListAsync();
+            throw new NotImplementedException();
         }
     }
 }
