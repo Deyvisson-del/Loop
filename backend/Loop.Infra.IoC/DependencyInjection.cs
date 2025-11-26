@@ -21,17 +21,17 @@ namespace Loop.Infra.IoC
             services.AddScoped<IEstagiarioRepository, EstagiarioRepository>();
             services.AddScoped<IGestorRepository, GestorRepository>();
             services.AddScoped<IAdministradorRepository, AdministradorRepository>();
-            services.AddScoped<ISolicitacaoRepository, SolicitacaoRepository>();
             services.AddScoped<IFrequenciaRepository, FrequenciaRepository>(); ;
+            services.AddScoped<ISolicitacaoRepository, SolicitacaoRepository>();
 
             var config = TypeAdapterConfig.GlobalSettings;
             services.AddSingleton(config);
             services.AddScoped<IMapper, Mapper>();
 
             services.AddScoped<IEstagiarioService, EstagiarioService>();
-            services.AddScoped<IFrequenciaService, FrequenciaService>();
             services.AddScoped<IAdministradorService, AdministradorService>();
-            services.AddScoped<ISolicitacaoService>, SolicitacaoService>();
+            services.AddScoped<IFrequenciaService, FrequenciaService>();
+            services.AddScoped<ISolicitacaoService, SolicitacaoService>();
 
             return services;
         }
