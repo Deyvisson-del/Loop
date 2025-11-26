@@ -5,17 +5,17 @@ namespace Loop.Domain.Interfaces
 
     public interface IGestorRepository
     {
-        Task<Estagiario?> ObterEstagiarioPorIdAsync(int Id);
+        Task<Gestor?> ObterGestorPorIdAsync(int Id);
 
-        Task<IEnumerable<Estagiario>> ObterTodosEstagiariosAsync();
+        Task<IEnumerable<Gestor>> ObterTodosGestoresAsync();
 
-        Task<Estagiario?> ObterEstagiarioPorEmailAsync(string email);
+        Task<Gestor?> ObterGestorPorEmailAsync(string email);
 
-        Task CriarEstagiarioAsync(Estagiario estagiario);
+        Task CriarGestorAsync(Gestor gestor);
 
-        Task AtualizarEstagiarioAsync(Estagiario estagiario);
+        Task AtualizarGestorAsync(int gestorId, Gestor gestor);
 
-        Task RemoverEstagiarioAsync(int id);
+        Task RemoverGestorAsync(int id);
 
         Task<IEnumerable<Frequencia>> VisualizarRelatorioEstagiarios(int id);
 

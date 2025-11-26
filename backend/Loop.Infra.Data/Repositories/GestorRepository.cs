@@ -13,40 +13,56 @@ namespace Loop.Infra.Data.Repositories
         {
             _context = context;
         }
-
-        public Task AtualizarEstagiarioAsync(Estagiario estagiario)
+        public async Task CriarGestorAsync(Gestor gestor)
         {
-            throw new NotImplementedException();
+            await _context.Gestores.AddAsync(gestor);
+            await _context.SaveChangesAsync();
         }
 
-        public Task CriarEstagiarioAsync(Estagiario estagiario)
+        public async Task AtualizarGestorAsync(int gestorId, Gestor gestor)
         {
-            throw new NotImplementedException();
+            bool gestorExiste = await _context.Gestores.AnyAsync(a => a.Id == gestorId);
+            if (!gestorExiste)
+                throw new ArgumentException("Gestor não existe");
+
+            _context.Gestores.Update(gestor);
+            await _context.SaveChangesAsync();
+
         }
 
-        public Task<Estagiario?> ObterEstagiarioPorEmailAsync(string email)
+        public async Task<Gestor?> ObterGestorPorEmailAsync(string email)
         {
-            throw new NotImplementedException();
+            return await _context.Gestores.FirstOrDefaultAsync(e => e.Email == email);
         }
 
-        public Task<Estagiario?> ObterEstagiarioPorIdAsync(int Id)
+        public async Task<Gestor?> ObterGestorPorIdAsync(int Id)
         {
-            throw new NotImplementedException();
+            return await _context.Gestores.FirstOrDefaultAsync(e => e.Id == Id);
         }
 
-        public Task<IEnumerable<Estagiario>> ObterTodosEstagiariosAsync()
+        public async Task<IEnumerable<Gestor>> ObterTodosGestoresAsync()
         {
-            throw new NotImplementedException();
+            return await _context.Gestores.ToListAsync();
         }
 
-        public Task RemoverEstagiarioAsync(int id)
+        public async Task RemoverGestorAsync(int id)
         {
-            throw new NotImplementedException();
+            var user = await _context.Gestores.FindAsync(id);
+            if (user == null)
+                throw new ArgumentException("Gestor não encontrado");
+
+            _context.Gestores.Remove(user);
+            await _context.SaveChangesAsync();
+            
         }
 
-        public Task<IEnumerable<Frequencia>> VisualizarRelatorioEstagiarios(int id)
+        public async Task<IEnumerable<Frequencia>> VisualizarRelatorioEstagiarios(int id)
         {
-            throw new NotImplementedException();
+            await _context.Estagiarios.FindAsync(id);
+            return await _context.Frequencias
+                .Where(f => f.EstagiarioId == id)
+                .Include(f => f.Estagiario)
+                .ToListAsync();
         }
     }
 }

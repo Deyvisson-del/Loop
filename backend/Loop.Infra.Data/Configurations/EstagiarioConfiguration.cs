@@ -4,10 +4,10 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Loop.Infra.Data.Configurations
 {
- 
+
     public class EstagiarioConfiguration : IEntityTypeConfiguration<Estagiario>
     {
-        
+
         public void Configure(EntityTypeBuilder<Estagiario> builder)
         {
             builder.ToTable("Estagiarios");

@@ -7,7 +7,7 @@ namespace Loop.Infra.Data.Configurations
 
     public class FrequenciaConfiguration : IEntityTypeConfiguration<Frequencia>
     {
-       
+
         public void Configure(EntityTypeBuilder<Frequencia> builder)
         {
 
@@ -16,7 +16,7 @@ namespace Loop.Infra.Data.Configurations
             builder.HasKey(x => x.Id);
 
             builder.Property(f => f.Data)
-                .HasColumnType("date") 
+                .HasColumnType("date")
                 .IsRequired();
 
             builder.Property(f => f.HoraChegada)

@@ -3,7 +3,6 @@ using Loop.Domain.Enums;
 using Loop.Domain.Interfaces;
 using Loop.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.VisualBasic;
 
 namespace Loop.Infra.Data.Repositories
 {
@@ -16,57 +15,64 @@ namespace Loop.Infra.Data.Repositories
             _context = context;
         }
 
-        public async Task<Frequencia?> BaterEntradaAsync(int id)
+        public async Task AtualizarEstagiario(int id, Estagiario estagiario)
         {
-            var freq = new Frequencia
-            {
-                EstagiarioId = id,
-                Data = DateTime.Now,
-                HoraChegada = DateTime.Now.TimeOfDay,
+            bool estagiarioExiste = await _context.Estagiarios.AnyAsync(a => a.Id == id);
+            if (!estagiarioExiste)
+                throw new ArgumentException("Estagiario não existe");
 
+            _context.Estagiarios.Update(estagiario);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task CriarEstagiarioAsync(Estagiario estagiario)
+        {
+            await _context.Estagiarios.AddAsync(estagiario);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<Estagiario?> ObterEstagiarioPorEmailAsync(string email)
+        {
+            return await _context.Estagiarios.FirstOrDefaultAsync(e => e.Email == email);
+        }
+
+        public async Task<Estagiario?> ObterEstagiarioPorIdAsync(int Id)
+        {
+            return await _context.Estagiarios.FirstOrDefaultAsync(e => e.Id == Id);
+        }
+
+        public async Task<IEnumerable<Estagiario>> ObterTodosEstagiariosAsync()
+        {
+            return await _context.Estagiarios.ToListAsync();
+        }
+
+        public async Task RemoverEstagiarioAsync(int id)
+        {
+            var estagiarioExiste = await _context.Estagiarios.FindAsync(id);
+
+            if (estagiarioExiste == null)
+                throw new ArgumentException("Estagiario não existe");
+
+            _context.Estagiarios.Remove(estagiarioExiste);
+                await _context.SaveChangesAsync();
+        }
+
+        public async Task SolicitarAjusteCargaHoraria(int estagiarioId, string justificativa, TimeSpan horaEntrada, TimeSpan horaSaida)
+        {
+            var solicitacao = new Solicitacao
+            {
+                EstagiarioId = estagiarioId,
+                Justificativa = justificativa,
+                HorarioEntrada = horaEntrada,
+                HorarioSaida = horaSaida,
+                DataSolicitacao = DateTime.UtcNow,
+                Status = StatusSolicitacao.PE
             };
 
-            await _context.Frequencias.AddAsync(freq);
+            await _context.Solicitacoes.AddAsync(solicitacao);
             await _context.SaveChangesAsync();
 
-            return freq;
         }
-
-        public async Task<Frequencia?> BaterSaidaAsync(int id)
-        {
-            var freq = await _context.Frequencias
-            .Where(f => f.EstagiarioId == id && f.HoraSaida == null)
-            .OrderByDescending(f => f.Id)
-            .FirstOrDefaultAsync();
-
-            if (freq == null)
-                throw new InvalidOperationException("Não existe ponto de entrada aberto.");
-
-            freq.HoraSaida = DateTime.Now.TimeOfDay;
-
-            _context.Frequencias.Update(freq);
-            await _context.SaveChangesAsync();
-
-            return freq;
-        }
-
-        public async Task SolicitarAjusteCargaHoraria(int estagiarioId, string justificativa, TimeSpan horaEntrada,TimeSpan horaSaida)
-        {
-                var solicitacao = new Solicitacao
-                {
-                    EstagiarioId = estagiarioId,
-                    Justificativa = justificativa,
-                    HorarioEntrada = horaEntrada,
-                    HorarioSaida = horaSaida,
-                    DataSolicitacao = DateTime.UtcNow,
-                    Status = StatusSolicitacao.PE
-                };
-
-            await  _context.Solicitacoes.AddAsync(solicitacao);
-            await _context.SaveChangesAsync();
-
-            }
-
 
         public async Task<IEnumerable<Frequencia?>> VisualizarRelatorio(int estagiarioId)
         {

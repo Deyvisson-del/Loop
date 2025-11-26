@@ -39,12 +39,12 @@ namespace Loop.Infra.Data.Repositories
 
         public async Task<Administrador?> ObterAdminiadorPorEmail(string email)
         {
-           return await _context.Administradores.FirstOrDefaultAsync(x => x.Email == email);
+            return await _context.Administradores.FirstOrDefaultAsync(x => x.Email == email);
         }
 
         public async Task<Administrador?> ObterAdministradorPorId(int id)
         {
-            return await _context.Administradores.FirstOrDefaultAsync(a=>a.Id == id);
+            return await _context.Administradores.FirstOrDefaultAsync(a => a.Id == id);
         }
 
         public async Task<IEnumerable<Administrador?>> ObterTodosAdministradoresAsync()
