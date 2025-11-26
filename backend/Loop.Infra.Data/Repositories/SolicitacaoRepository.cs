@@ -1,33 +1,47 @@
 ﻿using Loop.Domain.Entities;
+using Loop.Domain.Enums;
 using Loop.Domain.Interfaces;
+using Loop.Infra.Data.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace Loop.Infra.Data.Repositories
 {
     public class SolicitacaoRepository : ISolicitacaoRepository
     {
-        public Task AtualizarAsync(Solicitacao solicitacao)
+
+        private readonly LoopDbContext _context;
+
+        public SolicitacaoRepository(LoopDbContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
         }
 
-        public Task<Solicitacao> CriarSolicitacaoAsync(Solicitacao solicitacao)
+        public async Task AtualizarAsync(Solicitacao solicitacao)
         {
-            throw new NotImplementedException();
+             _context.Solicitacoes.Update(solicitacao);
+            await _context.SaveChangesAsync();
         }
 
-        public Task<IEnumerable<Solicitacao>> ObterPorEstagiarioIdAsync(int estagiarioId)
+        public async Task<Solicitacao?> ObterPorEstagiarioIdAsync(int estagiarioId)
         {
-            throw new NotImplementedException();
+            return await _context.Solicitacoes.FirstOrDefaultAsync(a => a.EstagiarioId == estagiarioId);
         }
 
-        public Task<IEnumerable<Solicitacao>> ObterPorPendentesAsync()
+        public async Task<IEnumerable<Solicitacao>> ObterPorPendentesAsync()
         {
-            throw new NotImplementedException();
+            return await _context.Solicitacoes
+                .Where(s => s.Status == StatusSolicitacao.PE)
+                .ToListAsync();
         }
 
-        public Task<Solicitacao> ObterSolicitacaoPorId(int id)
+        public async Task<Solicitacao?> ObterSolicitacaoPorId(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Solicitacoes.FirstOrDefaultAsync(a => a.Id == id);
+        }
+
+        public async Task<IEnumerable<Solicitacao?>> ObterTodasSolicidacaoAsync()
+        {
+            return await _context.Solicitacoes.ToListAsync();
         }
     }
 }
