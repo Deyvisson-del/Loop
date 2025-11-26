@@ -10,7 +10,7 @@ namespace Loop.Domain.Entities
         public int FrequenciaId { get; set; }
         public DateTime DataSolicitacao { get; set; } = DateTime.Now;
         public string Justificativa { get; set; }
-        public TimeSpan? HorarioEntrada { get; set; } 
+        public TimeSpan? HorarioEntrada { get; set; }
         public TimeSpan? HorarioSaida { get; set; }
         public StatusSolicitacao Status { get; set; } = StatusSolicitacao.PE;
         public string? RespostaGestor { get; set; }
