@@ -10,21 +10,21 @@ namespace Loop.Domain.Entities
         public int FrequenciaId { get; set; }
         public DateTime DataSolicitacao { get; set; } = DateTime.Now;
         public string Justificativa { get; set; }
-        public DateTime? HorarioEntrada { get; set; }
-        public DateTime? HorarioSaida { get; set; }
+        public TimeSpan? HorarioEntrada { get; set; } 
+        public TimeSpan? HorarioSaida { get; set; }
         public StatusSolicitacao Status { get; set; } = StatusSolicitacao.PE;
         public string? RespostaGestor { get; set; }
         public DateTime? RespostaData { get; set; }
 
         public Solicitacao() { }
 
-        public Solicitacao(int estagiarioId, int frequenciaId, string justificativa, DateTime? novaEntrada, DateTime? novaSaida)
+        public Solicitacao(int estagiarioId, int frequenciaId, string justificativa, TimeSpan? novaEntrada, TimeSpan? novaSaida)
         {
             EstagiarioId = estagiarioId;
             FrequenciaId = frequenciaId;
             Justificativa = justificativa;
-            NovaEntrada = novaEntrada;
-            NovaSaida = novaSaida;
+            HorarioEntrada = novaEntrada;
+            HorarioSaida = novaSaida;
         }
 
         public void Aprovar(string respostaGestor)
@@ -47,13 +47,13 @@ namespace Loop.Domain.Entities
             RespostaData = DateTime.Now;
         }
 
-        public void AtualizarHorarios(DateTime? entrada, DateTime? saida)
+        public void AtualizarHorarios(TimeSpan? entrada, TimeSpan? saida)
         {
             if (Status != StatusSolicitacao.PE)
                 throw new InvalidOperationException("Solicitação já processada.");
 
-            NovaEntrada = entrada;
-            NovaSaida = saida;
+            HorarioEntrada = entrada;
+            HorarioSaida = saida;
         }
 
 
