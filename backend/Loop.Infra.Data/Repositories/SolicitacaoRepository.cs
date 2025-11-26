@@ -18,7 +18,7 @@ namespace Loop.Infra.Data.Repositories
 
         public async Task AtualizarAsync(Solicitacao solicitacao)
         {
-             _context.Solicitacoes.Update(solicitacao);
+            _context.Solicitacoes.Update(solicitacao);
             await _context.SaveChangesAsync();
         }
 

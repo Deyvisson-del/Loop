@@ -6,16 +6,16 @@ namespace Loop.Infra.Data.Context
 
     public class LoopDbContext : DbContext
     {
-       
+
         public LoopDbContext(DbContextOptions<LoopDbContext> options) : base(options) { }
 
-    
+
         public DbSet<Estagiario> Estagiarios { get; set; }
         public DbSet<Frequencia> Frequencias { get; set; }
         public DbSet<Gestor> Gestores { get; set; }
         public DbSet<Solicitacao> Solicitacoes { get; set; }
         public DbSet<Administrador> Administradores { get; set; }
-  
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(LoopDbContext).Assembly);

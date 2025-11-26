@@ -3,12 +3,12 @@
     public class Frequencia
     {
         public int Id { get; private set; } = default!;
-        public int EstagiarioId { get;  set; }
+        public int EstagiarioId { get; set; }
         public Estagiario Estagiario { get; private set; } = null!;
 
-        public DateTime? Data { get;  set; }
-        public TimeSpan? HoraChegada { get;  set; }
-        public TimeSpan? HoraSaida { get;  set; }
+        public DateTime? Data { get; set; }
+        public TimeSpan? HoraChegada { get; set; }
+        public TimeSpan? HoraSaida { get; set; }
         public TimeSpan HorasTrabalhadas { get; set; }
         public Frequencia() { }
 

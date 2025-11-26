@@ -10,9 +10,9 @@ namespace Loop.Infra.Data.Configurations
         {
             builder.ToTable("Solicitacoes");
 
-            builder.HasKey(s=>s.Id);
+            builder.HasKey(s => s.Id);
 
-            builder.Property(s=>s.Justificativa)
+            builder.Property(s => s.Justificativa)
                 .IsRequired()
                 .HasMaxLength(500);
 
@@ -22,10 +22,10 @@ namespace Loop.Infra.Data.Configurations
             builder.Property(e => e.Status)
                 .IsRequired();
 
-            builder.Property(s => s.HorarioEntrada) 
+            builder.Property(s => s.HorarioEntrada)
                 .IsRequired(false);
 
-            builder.Property(s => s.HorarioSaida) 
+            builder.Property(s => s.HorarioSaida)
                 .IsRequired(false);
 
             builder.Property(s => s.RespostaGestor)
