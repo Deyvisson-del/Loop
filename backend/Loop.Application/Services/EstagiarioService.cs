@@ -10,38 +10,29 @@ namespace Loop.Application.Services
     public class EstagiarioService : IEstagiarioService
     {
         private readonly IEstagiarioRepository _estagiarioRepository;
+        private readonly IFrequenciaRepository _frequenciaRepository;
         private readonly IMapper _mapper;
 
-       
+
         public EstagiarioService(IEstagiarioRepository estagiarioRepository, IMapper mapper)
         {
             _estagiarioRepository = estagiarioRepository;
             _mapper = mapper;
         }
 
-        public Task<Frequencia?> BaterPonto(Frequencia frequencia)
+        public async Task<Frequencia> BaterEntradaAsync(int estagiarioId)
         {
-            throw new NotImplementedException();
+            return await _frequenciaRepository.BaterEntradaAsync(estagiarioId);
         }
 
-        public Task<EstagiarioDTO?> ObterPorEmailAsync(string email)
+        public async Task<Frequencia> BaterSaidaAsync(int estagiarioId)
         {
-            throw new NotImplementedException();
+            return await _frequenciaRepository.BaterSaidaAsync(estagiarioId);
         }
 
-        public Task<FrequenciaDTO> RagistrarPonto(FrequenciaDTO frequenciaDTO)
+        public async Task<IEnumerable<Frequencia?>> VisualizarRelatorio(int estagiarioId)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task SolicitarAjusteCargaHoraria(int estagiarioId, string justificativa, TimeOnly horaCorrigida)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IEnumerable<Frequencia?>> VisualizarRelatorio()
-        {
-            throw new NotImplementedException();
+            return await _estagiarioRepository.VisualizarRelatorio(estagiarioId);
         }
     }
 }

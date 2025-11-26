@@ -4,7 +4,7 @@ using Loop.Domain.Interfaces;
 
 namespace Loop.Application.Services
 {
-    public class LoginService 
+    public class LoginService
     {
         private readonly IEstagiarioRepository _estagiarioRepository;
         private readonly IGestorRepository _gestorRepository;
@@ -14,6 +14,6 @@ namespace Loop.Application.Services
             _estagiarioRepository = estagiarioRepository;
             _gestorRepository = gestorRepository;
         }
-       
+
     }
 }
