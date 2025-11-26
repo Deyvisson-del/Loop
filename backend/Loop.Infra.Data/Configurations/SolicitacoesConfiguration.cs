@@ -34,10 +34,11 @@ namespace Loop.Infra.Data.Configurations
             builder.Property(s => s.RespostaData)
                 .IsRequired(false);
 
-            builder.HasOne(s => s.Estagiario)
-                .WithMany(e => e.Solicitacoes)
-                .HasForeignKey(s => s.EstagiarioId)
-                .OnDelete(DeleteBehavior.Cascade);
+            builder.Property(s => s.EstagiarioId)
+                .IsRequired();
+
+            builder.Property(s => s.FrequenciaId)
+                .IsRequired();
         }
     }
 }
