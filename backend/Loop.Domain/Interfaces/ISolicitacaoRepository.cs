@@ -14,7 +14,7 @@ namespace Loop.Domain.Interfaces
         Task<IEnumerable<Solicitacao>> ObterTodasSolicidacaoAsync();
         Task<IEnumerable<Solicitacao>> ObterPorPendentesAsync();
 
-        Task AprovarSolicitacaoAsync(int solicitacaoId);
-        Task RejeitarSolicitacaoAsync(int solicitacaoId, string motivoRejeicao);
+        Task AprovarSolicitacaoAsync(Solicitacao solicitacao);
+        Task RejeitarSolicitacaoAsync(Solicitacao solicitacao);
     }
 }

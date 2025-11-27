@@ -11,15 +11,15 @@ namespace Loop.Infra.Data.Repositories
 
         private readonly LoopDbContext _contextSolicitacao;
 
-        public SolicitacaoRepository(LoopDbContext context)
+        public SolicitacaoRepository(LoopDbContext contcontextSolicitacao)
         {
-            _contextSolicitacao = context;
+            _contextSolicitacao = contcontextSolicitacao;
         }
 
         public async Task CriarSolicitacaoAsync(Solicitacao solicitacao)
         {
-            await _context.Solicitacoes.AddAsync(solicitacao);
-            await _context.SaveChangesAsync();
+            await _contextSolicitacao.Solicitacoes.AddAsync(solicitacao);
+            await _contextSolicitacao.SaveChangesAsync();
         }
 
         public async Task AtualizarSolicitacaoAsync(Solicitacao solicitacao)
@@ -55,6 +55,18 @@ namespace Loop.Infra.Data.Repositories
         public async Task<IEnumerable<Solicitacao?>> ObterTodasSolicidacaoAsync()
         {
             return await _contextSolicitacao.Solicitacoes.ToListAsync();
+        }
+
+        public async Task AprovarSolicitacaoAsync(Solicitacao solicitacao)
+        {
+            _contextSolicitacao.Solicitacoes.Update(solicitacao);
+            await _contextSolicitacao.SaveChangesAsync();
+        }
+
+        public Task RejeitarSolicitacaoAsync(Solicitacao solicitacao)
+        {
+            _contextSolicitacao.Solicitacoes.Update(solicitacao);
+            return _contextSolicitacao.SaveChangesAsync();
         }
     }
 }
