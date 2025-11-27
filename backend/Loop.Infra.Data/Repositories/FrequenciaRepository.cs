@@ -15,47 +15,22 @@ namespace Loop.Infra.Data.Repositories
             _contextFrequencia = repositoryFrequencia;
         }
 
-        public async Task AtualizarFrequenciaAsync(int id,Frequencia frequencia)
+        public async Task AtualizarFrequenciaAsync(Frequencia frequencia)
         {
-            bool idExiste = await _contextFrequencia.Frequencias.AnyAsync(f => f.Id == id);
-            if (!idExiste)
-                throw new InvalidOperationException("Frequência não encontrada.");
-
             _contextFrequencia.Frequencias.Update(frequencia);
             await _contextFrequencia.SaveChangesAsync();
         }
 
-        public async Task<Frequencia> BaterEntradaAsync(int id)
+        public async Task BaterEntradaAsync(Frequencia frequencia)
         {
-            var freq = new Frequencia
-            {
-                EstagiarioId = id,
-                Data = DateTime.Now,
-                HoraChegada = DateTime.Now.TimeOfDay,
-            };
-
-            await _contextFrequencia.Frequencias.AddAsync(freq);
+            await _contextFrequencia.Frequencias.AddAsync(frequencia);
             await _contextFrequencia.SaveChangesAsync();
-
-            return freq;
         }
 
-        public async Task<Frequencia?> BaterSaidaAsync(int id)
+        public async Task BaterSaidaAsync(Frequencia frequencia)
         {
-            var freq = await _contextFrequencia.Frequencias
-            .Where(f => f.EstagiarioId == id && f.HoraSaida == null)
-            .OrderByDescending(f => f.Id)
-            .FirstOrDefaultAsync();
-
-            if (freq == null)
-                throw new InvalidOperationException("Não existe ponto de entrada aberto.");
-
-            freq.HoraSaida = DateTime.Now.TimeOfDay;
-
-            _contextFrequencia.Frequencias.Update(freq);
+            _contextFrequencia.Frequencias.Update(frequencia);
             await _contextFrequencia.SaveChangesAsync();
-
-            return freq;
         }
 
         public async Task<IEnumerable<Frequencia>> ObterPorEstagiarioIdAsync(int estagiarioId)
@@ -63,10 +38,20 @@ namespace Loop.Infra.Data.Repositories
             return await _contextFrequencia.Frequencias.OrderBy(f => f.EstagiarioId).ThenBy(f => f.Data).ToListAsync();
         }
 
-        public async Task<Frequencia?> ObterPorIdAsync(int id)
+        public async Task<Frequencia?> ObterFrequenciaPorIdAsync(int id)
         {
             return await _contextFrequencia.Frequencias.FirstOrDefaultAsync(f => f.Id == id);
         }
 
+        public async Task RemoverFrequenciaAsync(Frequencia frequencia)
+        {
+            _contextFrequencia.Frequencias.Remove(frequencia);
+            await _contextFrequencia.SaveChangesAsync();
+        }
+
+        public async Task<Frequencia> ObterFrequenciaPorDataAsync(DateTime data)
+        {
+            return await _contextFrequencia.Frequencias.FirstOrDefaultAsync(f => f.Data == data.Date);
+        }
     }
 }

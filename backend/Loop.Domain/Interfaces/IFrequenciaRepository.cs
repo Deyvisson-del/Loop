@@ -4,10 +4,12 @@ namespace Loop.Domain.Interfaces
 {
     public interface IFrequenciaRepository
     {
-        Task<Frequencia?> BaterEntradaAsync(int id);
-        Task<Frequencia?> BaterSaidaAsync(int id);
-        Task<Frequencia?> ObterPorIdAsync(int id);
-        Task AtualizarFrequenciaAsync(int id,Frequencia frequencia);
+        Task BaterEntradaAsync(Frequencia frequencia);
+        Task BaterSaidaAsync(Frequencia frequencia);
+        Task<Frequencia> ObterFrequenciaPorIdAsync(int id);
+        Task AtualizarFrequenciaAsync(Frequencia frequencia);
+        Task RemoverFrequenciaAsync(Frequencia frequencia);
+        Task<Frequencia> ObterFrequenciaPorDataAsync(DateTime data);
         Task<IEnumerable<Frequencia>> ObterPorEstagiarioIdAsync(int estagiarioId);
     }
 }
