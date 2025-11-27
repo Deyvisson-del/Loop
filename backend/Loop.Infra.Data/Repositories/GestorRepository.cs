@@ -74,7 +74,8 @@ namespace Loop.Infra.Data.Repositories
 
             var solicitacao = _context.Solicitacoes.First(s => s.Id == solicitacaoId);
             solicitacao.Status = StatusSolicitacao.AP;
-            _context.Solicitacoes.Update(solicitacao);
+            solicitacao.RespostaData = DateTime.Now;
+             _context.Solicitacoes.Update(solicitacao);
             return _context.SaveChangesAsync();
         }
 
@@ -87,6 +88,7 @@ namespace Loop.Infra.Data.Repositories
             var solicitacao = _context.Solicitacoes.First(s => s.Id == solicitacaoId);
             solicitacao.Status = StatusSolicitacao.RP;
             solicitacao.Justificativa = motivoRejeicao;
+            solicitacao.RespostaData = DateTime.Now;
             _context.Solicitacoes.Update(solicitacao);
             return _context.SaveChangesAsync();
         }
