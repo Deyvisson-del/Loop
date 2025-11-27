@@ -17,7 +17,11 @@ namespace Loop.Domain.Interfaces
 
         Task RemoverGestorAsync(int id);
 
-        Task<IEnumerable<Frequencia>> VisualizarRelatorioEstagiarios(int id);
+        Task AprovarSolicitacaoAsync(int solicitacaoId);
+
+        Task RejeitarSolicitacaoAsync(int solicitacaoId, string motivoRejeicao);
+
+        Task<IEnumerable<Frequencia>> GerarRelatorioEstagiariosAsync(int id);
 
     }
 }
