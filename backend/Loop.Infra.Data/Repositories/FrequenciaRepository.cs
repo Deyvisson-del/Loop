@@ -15,11 +15,14 @@ namespace Loop.Infra.Data.Repositories
             _contextFrequencia = repositoryFrequencia;
         }
 
-        public async Task AtualizarFrequenciaAsync(Frequencia frequencia)
+        public async Task AtualizarFrequenciaAsync(int id,Frequencia frequencia)
         {
+            bool idExiste = await _contextFrequencia.Frequencias.AnyAsync(f => f.Id == id);
+            if (!idExiste)
+                throw new InvalidOperationException("Frequência não encontrada.");
+
             _contextFrequencia.Frequencias.Update(frequencia);
             await _contextFrequencia.SaveChangesAsync();
-
         }
 
         public async Task<Frequencia> BaterEntradaAsync(int id)

@@ -15,8 +15,12 @@ namespace Loop.Infra.Data.Repositories
             _context = context;
         }
 
-        public async Task AtualizarAsync(Administrador administrador)
+        public async Task AtualizarAsync(int id, Administrador administrador)
         {
+            bool idExiste = await _context.Administradores.AnyAsync(a => a.Id == id);
+            if(!idExiste)
+                throw new ArgumentException("Administrador não encontrado.");
+
             _context.Administradores.Update(administrador);
             await _context.SaveChangesAsync();
         }
