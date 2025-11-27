@@ -30,14 +30,14 @@ namespace Loop.Application.Services
             return await _frequenciaRepository.BaterSaidaAsync(estagiarioId);
         }
 
-        public Task SolicitarAjusteDePonto()
+        public async Task SolicitarAjusteDePonto(int estagiarioId, string justificativa, TimeSpan horaEntrada, TimeSpan horaSaida)
         {
-            throw new NotImplementedException();
+            await _estagiarioRepository.SolicitarAjusteCargaHoraria(estagiarioId, justificativa, horaEntrada, horaSaida);
         }
 
         public async Task<IEnumerable<Frequencia?>> VisualizarRelatorio(int estagiarioId)
         {
-            return await _estagiarioRepository.VisualizarRelatorio(estagiarioId);
+            return await _estagiarioRepository.GerarRelatorioFrequencia(estagiarioId);
         }
     }
 }

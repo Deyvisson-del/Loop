@@ -10,7 +10,7 @@ namespace Loop.Application.Interfaces
         Task<IEnumerable<Estagiario?>> ObterTodosEstagiariosAsync();
         Task<Estagiario?> ObterEstagiarioPorEmailAsync(string email);
         Task RemoverEstagiarioAsync(int id);
-
+        
         Task AprovarSolicitacaoAsync(int solicitacaoId);
         Task RejeitarSolicitacaoAsync(int solicitacaoId, string motivoRejeicao);
 

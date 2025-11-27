@@ -15,6 +15,9 @@
         {
         }
 
+
+
+
         public ICollection<Frequencia> Frequencias { get; set; } = new List<Frequencia>();
         public ICollection<Solicitacao> Solicitacoes { get; set; } = new List<Solicitacao>();
     }
