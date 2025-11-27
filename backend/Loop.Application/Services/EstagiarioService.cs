@@ -30,6 +30,11 @@ namespace Loop.Application.Services
             return await _frequenciaRepository.BaterSaidaAsync(estagiarioId);
         }
 
+        public Task SolicitarAjusteDePonto()
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<IEnumerable<Frequencia?>> VisualizarRelatorio(int estagiarioId)
         {
             return await _estagiarioRepository.VisualizarRelatorio(estagiarioId);
