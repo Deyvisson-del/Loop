@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Loop.Application.Interfaces;
 
 namespace Loop.Application.Services
 {
-    public class FrequenciaService
+    public class FrequenciaService : IFrequenciaService
     {
     }
 }
