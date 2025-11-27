@@ -1,19 +1,14 @@
-﻿using Loop.Application.DTOs;
-using Loop.Domain.Entities;
+﻿using Loop.Domain.Entities;
 
 namespace Loop.Application.Interfaces
 {
     public interface IEstagiarioService
     {
-        Task<Frequencia?> BaterPonto(Frequencia frequencia);
+        Task<Frequencia> BaterEntradaAsync(int estagiarioId);
+        Task<Frequencia> BaterSaidaAsync(int estagiarioId);
 
-        Task SolicitarAjusteCargaHoraria(int estagiarioId, string justificativa, TimeOnly horaCorrigida);
-
-        Task<IEnumerable<Frequencia?>> VisualizarRelatorio();
-
-        Task<EstagiarioDTO?> ObterPorEmailAsync(string email);
-
-        Task<FrequenciaDTO> RagistrarPonto(FrequenciaDTO frequenciaDTO);
+        Task SolicitarAjusteDePonto();
+        Task<IEnumerable<Frequencia?>> VisualizarRelatorio(int estagiarioId);
 
     }
 }

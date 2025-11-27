@@ -17,47 +17,26 @@ namespace Loop.API.Controllers
 
 
 
-        // GET api/estagiario
-        [HttpGet]
-        public async Task<IActionResult> Get()
+        [HttpPost("bater-entrada")]
+        public async Task<IActionResult> BaterEntrada([FromQuery] int estagiarioId)
         {
-            var estagiariosDTO = await _estagiarioService.ObterTodosAsync();
-            return Ok(estagiariosDTO);
-        }
-
-        //GET api/estagiario/1}
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int id)
-        {
-            var estagiario = await _estagiarioService.ObterPorIdAsync(id);
-            if (estagiario == null)
-                return NotFound();
-            return Ok(estagiario);
+            var frequencia = await _estagiarioService.BaterEntradaAsync(estagiarioId);
+            return Ok(frequencia);
         }
 
 
-        // PUT api/estagiario/1
-        [HttpPut]
-        public async Task<IActionResult> Update(int id, [FromBody] EstagiarioDTO estagiarioDTO)
+        [HttpPost("bater-saida")]
+        public async Task<IActionResult> BaterSaida([FromQuery] int estagiarioId)
         {
-
-            if (id != estagiarioDTO.Id)
-                return BadRequest("ID inválido.");
-
-            await _estagiarioService.AtualizarAsync(id, estagiarioDTO);
-            return NoContent();
+            var frequencia = await _estagiarioService.BaterSaidaAsync(estagiarioId);
+            return Ok(frequencia);
         }
 
-
-        // DELETE api/estagiario/1
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        [HttpGet("visualizar-relatorio")]
+        public async Task<IActionResult> VisualizarRelatorio([FromQuery] int estagiarioId)
         {
-            var estagiario = await _estagiarioService.ObterPorIdAsync(id);
-            if (estagiario == null)
-                return NotFound();
-            await _estagiarioService.RemoverAsync(id);
-            return NoContent();
+            var relatorio = await _estagiarioService.VisualizarRelatorio(estagiarioId);
+            return Ok(relatorio);
         }
 
     }

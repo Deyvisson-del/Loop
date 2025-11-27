@@ -16,10 +16,18 @@ namespace Loop.Infra.Data.Repositories
             _context = context;
         }
 
-        public async Task AtualizarAsync(Solicitacao solicitacao)
+        public async Task AtualizarAsync(int id,Solicitacao solicitacao)
         {
-            _context.Solicitacoes.Update(solicitacao);
-            await _context.SaveChangesAsync();
+            bool existente = await _context.Solicitacoes.AnyAsync(a => a.Id == id);
+
+            if (!existente)
+            {
+                throw new KeyNotFoundException("Solicitação não encontrada.");
+            }
+
+             _context.Solicitacoes.Update(solicitacao);
+                await _context.SaveChangesAsync();
+
         }
 
         public async Task<Solicitacao?> ObterPorEstagiarioIdAsync(int estagiarioId)

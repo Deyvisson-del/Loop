@@ -9,7 +9,7 @@ namespace Loop.Domain.Interfaces
         Task<Administrador?> ObterAdminiadorPorEmail(string email);
         Task<IEnumerable<Administrador?>> ObterTodosAdministradoresAsync();
         Task CriarAsync(Administrador administrador);
-        Task AtualizarAsync(Administrador administrador);
+        Task AtualizarAsync(int id,Administrador administrador);
         Task DeletarAsync(int id);
     }
 }

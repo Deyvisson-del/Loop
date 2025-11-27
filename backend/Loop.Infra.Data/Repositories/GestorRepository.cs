@@ -1,4 +1,5 @@
 ﻿using Loop.Domain.Entities;
+using Loop.Domain.Enums;
 using Loop.Domain.Interfaces;
 using Loop.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
@@ -56,7 +57,7 @@ namespace Loop.Infra.Data.Repositories
             
         }
 
-        public async Task<IEnumerable<Frequencia>> VisualizarRelatorioEstagiarios(int id)
+        public async Task<IEnumerable<Frequencia>> GerarRelatorioEstagiariosAsync(int id)
         {
             await _context.Estagiarios.FindAsync(id);
             return await _context.Frequencias
@@ -64,5 +65,34 @@ namespace Loop.Infra.Data.Repositories
                 .Include(f => f.Estagiario)
                 .ToListAsync();
         }
+
+        public Task AprovarSolicitacaoAsync(int solicitacaoId)
+        {
+            bool idExiste = _context.Solicitacoes.Any(s => s.Id == solicitacaoId);
+            if (!idExiste)
+                throw new ArgumentException("Solicitação não existe");
+
+            var solicitacao = _context.Solicitacoes.First(s => s.Id == solicitacaoId);
+            solicitacao.Status = StatusSolicitacao.AP;
+            solicitacao.RespostaData = DateTime.Now;
+             _context.Solicitacoes.Update(solicitacao);
+            return _context.SaveChangesAsync();
+        }
+
+        public Task RejeitarSolicitacaoAsync(int solicitacaoId, string motivoRejeicao)
+        {
+            bool idExiste = _context.Solicitacoes.Any(s => s.Id == solicitacaoId);
+            if (!idExiste)
+                throw new ArgumentException("Solicitação não existe");
+
+            var solicitacao = _context.Solicitacoes.First(s => s.Id == solicitacaoId);
+            solicitacao.Status = StatusSolicitacao.RP;
+            solicitacao.Justificativa = motivoRejeicao;
+            solicitacao.RespostaData = DateTime.Now;
+            _context.Solicitacoes.Update(solicitacao);
+            return _context.SaveChangesAsync();
+        }
+
+
     }
 }
