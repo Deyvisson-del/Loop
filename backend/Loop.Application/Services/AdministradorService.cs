@@ -1,101 +1,25 @@
 ﻿using Loop.Application.Interfaces;
 using Loop.Domain.Entities;
+using Loop.Domain.Interfaces;
 
 namespace Loop.Application.Services
 {
     public class AdministradorService : IAdministradorService
     {
-        public Task AprovarSolicitacaoAsync(int solicitacaoId)
-        {
-            throw new NotImplementedException();
-        }
+        private readonly IAdministradorRepository _administradorRepository;
+        private readonly IEstagiarioRepository _estagiarioRepository;
+        private readonly IGestorRepository _gestorRepository;
+        private readonly IFrequenciaRepository _frequenciaRepository;
+        private readonly ISolicitacaoRepository _solicitacaoRepository;
 
-        public Task AtualizarEstagiarioAsync(int estagiarioId, Estagiario estagiario)
+        public async Task CriarEstagiarioAsync(Estagiario estagiario)
         {
-            throw new NotImplementedException();
-        }
+            estagiario = Estagiario
 
-        public Task AtualizarFrequenciasync(int frequenciaId, Frequencia frequencia)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task AtualizarGestorAsync(int gestorId, Gestor gestor)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task CriarEstagiarioAsync(Estagiario estagiario)
-        {
-            throw new NotImplementedException();
+            await _estagiarioRepository.CriarEstagiarioAsync(estagiario);
         }
 
         public Task CriarGestorAsync(Gestor gestor)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IEnumerable<Frequencia>> GerarRelatorioFrequencia(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Estagiario?> ObterEstagiarioPorEmailAsync(string email)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Estagiario?> ObterEstagiarioPorIdAsync(int Id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Frequencia?> ObterFrequenciaPorIdAsync(int Id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Gestor?> ObterGestorPorEmailAsync(string email)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Gestor?> ObterGestorPorIdAsync(int Id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IEnumerable<Solicitacao>> ObterSolicitacoesPendentesAsync()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IEnumerable<Solicitacao?>> ObterTodasSolicitacoesAsync()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IEnumerable<Estagiario?>> ObterTodosEstagiariosAsync()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IEnumerable<Gestor?>> ObterTodosGestoresAsync()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task RejeitarSolicitacaoAsync(int solicitacaoId, string motivoRejeicao)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task RemoverEstagiarioAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task RemoverGestorAsync(int id)
         {
             throw new NotImplementedException();
         }

@@ -8,18 +8,18 @@ namespace Loop.Application.Services
     public class GestorService : IGestorService
     {
 
-        private readonly IGestorRepository _gestorRepository;   
+        private readonly IGestorRepository _gestorRepository;
+        private readonly IEstagiarioRepository _estagiarioRepository;
+        private readonly ISolicitacaoRepository _solicitacaoRepository;
 
         public GestorService(IGestorRepository gestorRepository)
         {
             _gestorRepository = gestorRepository;
         }
 
-
         public Task AprovarSolicitacaoAsync(int solicitacaoId)
         {
             throw new NotImplementedException();
-
         }
 
         public Task AtualizarEstagiarioAsync(int estagiarioId, Estagiario estagiario)

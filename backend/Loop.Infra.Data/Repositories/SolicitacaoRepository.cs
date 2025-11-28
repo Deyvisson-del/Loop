@@ -9,47 +9,64 @@ namespace Loop.Infra.Data.Repositories
     public class SolicitacaoRepository : ISolicitacaoRepository
     {
 
-        private readonly LoopDbContext _context;
+        private readonly LoopDbContext _contextSolicitacao;
 
-        public SolicitacaoRepository(LoopDbContext context)
+        public SolicitacaoRepository(LoopDbContext contcontextSolicitacao)
         {
-            _context = context;
+            _contextSolicitacao = contcontextSolicitacao;
         }
 
-        public async Task AtualizarAsync(int id,Solicitacao solicitacao)
+        public async Task CriarSolicitacaoAsync(Solicitacao solicitacao)
         {
-            bool existente = await _context.Solicitacoes.AnyAsync(a => a.Id == id);
+            await _contextSolicitacao.Solicitacoes.AddAsync(solicitacao);
+            await _contextSolicitacao.SaveChangesAsync();
+        }
 
-            if (!existente)
-            {
-                throw new KeyNotFoundException("Solicitação não encontrada.");
-            }
+        public async Task AtualizarSolicitacaoAsync(Solicitacao solicitacao)
+        {
+            _contextSolicitacao.Solicitacoes.Update(solicitacao);
+            await _contextSolicitacao.SaveChangesAsync();
+        }
 
-             _context.Solicitacoes.Update(solicitacao);
-                await _context.SaveChangesAsync();
-
+        public async Task RemoverSolicitacaoAsync(int id)
+        {
+            await _contextSolicitacao.Solicitacoes
+                .Where(s => s.Id == id)
+                .ExecuteDeleteAsync();
         }
 
         public async Task<Solicitacao?> ObterPorEstagiarioIdAsync(int estagiarioId)
         {
-            return await _context.Solicitacoes.FirstOrDefaultAsync(a => a.EstagiarioId == estagiarioId);
+            return await _contextSolicitacao.Solicitacoes.FirstOrDefaultAsync(a => a.EstagiarioId == estagiarioId);
         }
 
         public async Task<IEnumerable<Solicitacao>> ObterPorPendentesAsync()
         {
-            return await _context.Solicitacoes
+            return await _contextSolicitacao.Solicitacoes
                 .Where(s => s.Status == StatusSolicitacao.PE)
                 .ToListAsync();
         }
 
         public async Task<Solicitacao?> ObterSolicitacaoPorId(int id)
         {
-            return await _context.Solicitacoes.FirstOrDefaultAsync(a => a.Id == id);
+            return await _contextSolicitacao.Solicitacoes.FirstOrDefaultAsync(a => a.Id == id);
         }
 
         public async Task<IEnumerable<Solicitacao?>> ObterTodasSolicidacaoAsync()
         {
-            return await _context.Solicitacoes.ToListAsync();
+            return await _contextSolicitacao.Solicitacoes.ToListAsync();
+        }
+
+        public async Task AprovarSolicitacaoAsync(Solicitacao solicitacao)
+        {
+            _contextSolicitacao.Solicitacoes.Update(solicitacao);
+            await _contextSolicitacao.SaveChangesAsync();
+        }
+
+        public Task RejeitarSolicitacaoAsync(Solicitacao solicitacao)
+        {
+            _contextSolicitacao.Solicitacoes.Update(solicitacao);
+            return _contextSolicitacao.SaveChangesAsync();
         }
     }
 }

@@ -8,52 +8,47 @@ namespace Loop.Infra.Data.Repositories
     public class AdministradorRepository : IAdministradorRepository
     {
 
-        private readonly LoopDbContext _context;
+        private readonly LoopDbContext _contextAdministrador;
 
-        public AdministradorRepository(LoopDbContext context)
+        public AdministradorRepository(LoopDbContext contextAdministrador)
         {
-            _context = context;
+            _contextAdministrador = contextAdministrador;
         }
 
-        public async Task AtualizarAsync(int id, Administrador administrador)
+        public async Task AtualizarAdministradorAsync(Administrador administrador)
         {
-            bool idExiste = await _context.Administradores.AnyAsync(a => a.Id == id);
-            if(!idExiste)
-                throw new ArgumentException("Administrador não encontrado.");
-
-            _context.Administradores.Update(administrador);
-            await _context.SaveChangesAsync();
+            _contextAdministrador.Administradores.Update(administrador);
+            await _contextAdministrador.SaveChangesAsync();
         }
 
-        public async Task CriarAsync(Administrador administrador)
+        public async Task CriarAdministradorAsync(Administrador administrador)
         {
-            await _context.Administradores.AddAsync(administrador);
-            await _context.SaveChangesAsync();
+            await _contextAdministrador.Administradores.AddAsync(administrador);
+            await _contextAdministrador.SaveChangesAsync();
         }
 
-        public async Task DeletarAsync(int id)
+        public async Task DeletarAdministradorAsync(Administrador administrador)
         {
-            var adm = await ObterAdministradorPorId(id);
-            if (adm != null)
-            {
-                _context.Administradores.Remove(adm);
-                await _context.SaveChangesAsync();
-            }
+            _contextAdministrador.Administradores.Remove(administrador);
+            await _contextAdministrador.SaveChangesAsync();
         }
 
-        public async Task<Administrador?> ObterAdminiadorPorEmail(string email)
+        public async Task<Administrador?> ObterAdministradorPorIdAsync(int id)
         {
-            return await _context.Administradores.FirstOrDefaultAsync(x => x.Email == email);
+            return await _contextAdministrador.Administradores.FindAsync(id) ??
+                throw new InvalidOperationException("Administrador não encontrado.");
         }
 
-        public async Task<Administrador?> ObterAdministradorPorId(int id)
+        public async Task<Administrador?> ObterAdminiadorPorEmailAsync(string email)
         {
-            return await _context.Administradores.FirstOrDefaultAsync(a => a.Id == id);
+            return await _contextAdministrador.Administradores.FirstOrDefaultAsync(x => x.Email == email) ??
+                throw new InvalidOperationException("Administrador não encontrado.");
         }
 
         public async Task<IEnumerable<Administrador?>> ObterTodosAdministradoresAsync()
         {
-            return await _context.Administradores.AsNoTracking().ToListAsync();
+            return await _contextAdministrador.Administradores.AsNoTracking().ToListAsync() ??
+                throw new InvalidOperationException("Administradores não encontrados");
         }
     }
 }

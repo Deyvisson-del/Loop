@@ -4,12 +4,13 @@ namespace Loop.Domain.Interfaces
 {
     public interface IAdministradorRepository
     {
+        Task CriarAdministradorAsync(Administrador administrador);
+        Task AtualizarAdministradorAsync(Administrador administrador);
+        Task DeletarAdministradorAsync(Administrador administrador);
 
-        Task<Administrador?> ObterAdministradorPorId(int id);
-        Task<Administrador?> ObterAdminiadorPorEmail(string email);
-        Task<IEnumerable<Administrador?>> ObterTodosAdministradoresAsync();
-        Task CriarAsync(Administrador administrador);
-        Task AtualizarAsync(int id,Administrador administrador);
-        Task DeletarAsync(int id);
+
+        Task<Administrador> ObterAdministradorPorIdAsync(int id);
+        Task<Administrador> ObterAdminiadorPorEmailAsync(string email);
+        Task<IEnumerable<Administrador>> ObterTodosAdministradoresAsync();
     }
 }
