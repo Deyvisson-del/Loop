@@ -8,7 +8,7 @@ namespace Loop.Application.Interfaces
         Task<Frequencia> BaterSaidaAsync(int estagiarioId);
 
         Task SolicitarAjusteDePonto(int estagiarioId, string justificativa, TimeSpan horaEntrada, TimeSpan horaSaida);
-        Task<IEnumerable<Frequencia?>> VisualizarRelatorio(int estagiarioId);
+        Task<IEnumerable<Frequencia>> VisualizarRelatorio(int estagiarioId);
 
     }
 }
