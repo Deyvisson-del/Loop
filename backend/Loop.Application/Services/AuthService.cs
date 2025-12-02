@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Loop.Application.Services
 {
-    public class AuthService : IAuthService
+    public class AuthService 
     {
 
         private readonly IConfiguration _configuration;
