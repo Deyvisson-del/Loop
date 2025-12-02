@@ -27,9 +27,9 @@ namespace Loop.Application.Services
             throw new NotImplementedException();
         }
 
-        public Task CriarEstagiarioAsync(Estagiario estagiario)
+        public async Task CriarEstagiarioAsync(Estagiario estagiario)
         {
-            throw new NotImplementedException();
+            await _estagiarioRepository.CriarEstagiarioAsync(estagiario);
         }
 
         public Task<IEnumerable<Frequencia>> GerarRelatorioFrequencia(int id)
