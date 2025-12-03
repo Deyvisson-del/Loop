@@ -53,5 +53,16 @@ namespace Loop.Infra.Data.Repositories
         {
             return await _contextFrequencia.Frequencias.FirstOrDefaultAsync(f => f.Data == data.Date);
         }
+
+        public async Task<IEnumerable<Frequencia>> ObterTodasFrequenciasAsync()
+        {
+            return await _contextFrequencia.Frequencias.ToListAsync();
+        }
+
+        public async Task<IEnumerable<Frequencia>> GerarRelatorioAsync(int estagiarioId)
+        {
+           var frequencias= await _contextFrequencia.Frequencias.Where(f => f.EstagiarioId == estagiarioId).ToListAsync();
+            return frequencias;
+        }
     }
 }

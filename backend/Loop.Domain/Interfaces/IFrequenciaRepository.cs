@@ -11,5 +11,9 @@ namespace Loop.Domain.Interfaces
         Task RemoverFrequenciaAsync(Frequencia frequencia);
         Task<Frequencia> ObterFrequenciaPorDataAsync(DateTime data);
         Task<IEnumerable<Frequencia>> ObterPorEstagiarioIdAsync(int estagiarioId);
+        
+        Task <IEnumerable<Frequencia>> ObterTodasFrequenciasAsync();
+    
+        Task<IEnumerable<Frequencia>> GerarRelatorioAsync(int estagiarioId);
     }
 }

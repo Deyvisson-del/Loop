@@ -30,7 +30,6 @@ namespace Loop.Infra.IoC
 
             services.AddScoped<IEstagiarioService, EstagiarioService>();
             services.AddScoped<IAdministradorService, AdministradorService>();
-            services.AddScoped<IFrequenciaService, FrequenciaService>();
             services.AddScoped<ISolicitacaoService, SolicitacaoService>();
 
             return services;

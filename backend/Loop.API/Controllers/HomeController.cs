@@ -7,18 +7,16 @@ namespace Loop.API.Controllers
     [Route("api/[controller]")]
     public class HomeController : ControllerBase
     {
-        private readonly IEstagiarioService _estagiarioService;
 
-        public HomeController(IEstagiarioService estagiarioService)
-        {
-            _estagiarioService = estagiarioService;
-        }
+        private readonly IEstagiarioService _estagiarioService;
+        private readonly IAdministradorService _administradorService;
 
         // GET api/Estagiario
         [HttpGet]
+        [Route("api/estagiario")]
         public async Task<IActionResult> IndexAsync()
         {
-            var estagiariosDTO = await _estagiarioService.ObterTodosAsync();
+            var estagiariosDTO = await _administradorService.ObterTodosEstagiariosAsync();
             return Ok(estagiariosDTO);
         }
 
