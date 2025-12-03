@@ -8,27 +8,25 @@ namespace Loop.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class GestorController : ControllerBase
+    public class GestorController : Controller
     {
         private readonly IGestorService _gestorService;
         private readonly IEstagiarioService _estagiarioService;
-        public GestorController(IGestorService gestorService)
+        public GestorController(IGestorService gestorService, IEstagiarioService estagiarioService)
         {
             _gestorService = gestorService;
+            _estagiarioService = estagiarioService;
         }
 
         // POST api/estagiario
-        [Route("api/CriarEstagiario/")]
         [HttpPost]
+        [Route("api/CriarEstagiario/")]
         public async Task<IActionResult> Create([FromBody] Estagiario estagiario)
         {
             if (estagiario == null)
                 return BadRequest("EstagiarioDTO é nulo.");
 
-
-            //var createdEstagiario = await _gestorService.CriarEstagiarioAsync(estagiario);
-            //    CreatedAtAction(nameof(GetById), new { id = createdEstagiario.Id }, createdEstagiario);
-            return null; 
+            return View(); 
         }
 
 
