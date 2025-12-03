@@ -9,7 +9,7 @@ Este projeto é um sistema de gerenciamento de frequência desenvolvido para aux
 
 
 ### Front End
-[![My Skills](https://skillicons.dev/icons?i=vue,vuetify,nuxt,tailwind,figma&perline=3)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=vite,react,figma&perline=3)](https://skillicons.dev)
 
 ## Tecnologias Utilizadas
 
