@@ -28,7 +28,7 @@ namespace Loop.Infra.Data.Configurations
                 .IsRequired(false);
 
             builder.Property(f => f.HorasTrabalhadas)
-                .HasColumnType("float")
+                .HasColumnType("time")
                 .IsRequired();
 
             builder.HasOne(f => f.Estagiario)
