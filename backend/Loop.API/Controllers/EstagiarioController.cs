@@ -16,7 +16,8 @@ namespace Loop.API.Controllers
         }
 
 
-        [HttpPost("bater-entrada")]
+        [HttpPost]
+        [Route("bater-entrada")]
     
         public async Task<IActionResult> BaterEntrada([FromQuery] int estagiarioId)
         {

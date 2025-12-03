@@ -53,7 +53,7 @@ namespace Loop.Application.Services
             } 
 
             frequencia.HoraSaida = DateTime.Now.TimeOfDay;
-            frequencia.HorasTrabalhadas = frequencia.HoraSaida.Value - frequencia.HoraChegada;
+            frequencia.HorasTrabalhadas = (TimeSpan)(frequencia.HoraSaida.Value - frequencia.HoraChegada);
 
              await _frequenciaRepository.BaterSaidaAsync(frequencia);
             return frequencia;
