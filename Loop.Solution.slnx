@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="Loop.API.MVC/Loop.API.MVC.csproj" />
+  <Project Path="Loop.Application/Loop.Application.csproj" />
+  <Project Path="Loop.Domain/Loop.Domain.csproj" />
+  <Project Path="Loop.Infra.Data/Loop.Infra.Data.csproj" />
+  <Project Path="Loop.Infra.IoC/Loop.Infra.IoC.csproj" />
+</Solution>
