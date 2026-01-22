@@ -10,4 +10,10 @@
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Loop.Application\Loop.Application.csproj" />
+    <ProjectReference Include="..\Loop.Domain\Loop.Domain.csproj" />
+    <ProjectReference Include="..\Loop.Infra.Data\Loop.Infra.Data.csproj" />
+  </ItemGroup>
+
 </Project>
