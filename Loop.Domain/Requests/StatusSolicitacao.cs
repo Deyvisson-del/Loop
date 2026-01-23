@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Loop.Domain.Enums
+namespace Loop.Domain.Requests
 {
     public enum StatusSolicitacao
     {
