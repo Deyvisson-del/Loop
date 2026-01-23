@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Security.Cryptography;
+using System.Text.RegularExpressions;
 
 namespace Loop.Domain.Entities
 {
@@ -60,10 +61,33 @@ namespace Loop.Domain.Entities
         }
 
 
-        protected string EncriptadorDeSenha(string senhaPura)
+        public bool VerificacaoSenha(string senhaPura)
         {
-            return "";
+            return AutentificacaoHashSeguro(senhaPura, Senha);
         }
+
+        private static string EncriptadorDeSenha(string senhaPura)
+        {
+            byte[] salt = RandomNumberGenerator.GetBytes(16);
+            const int interacoes = 10000;
+            using var pbkdf2 = new Rfc2898DeriveBytes(senhaPura, salt, interacoes, HashAlgorithmName.SHA3_384);
+            byte[] hash = pbkdf2.GetBytes(32);
+
+            return $"{interacoes}:{Convert.ToBase64String(salt)}:{Convert.ToBase64String(hash)}";
+        }
+
+        private static bool AutentificacaoHashSeguro(string senhaPura, string senhaCriptografada)
+        {
+            var partes = senhaCriptografada.Split(':');
+            int interacoes = int.Parse(partes[0]);
+            byte[] salt = Convert.FromBase64String(partes[1]);
+            byte[] hashOriginal = Convert.FromBase64String(partes[2]);
+            using var pbkdf2 = new Rfc2898DeriveBytes(senhaPura, salt, interacoes, HashAlgorithmName.SHA256);
+            byte[] hashDigitado = pbkdf2.GetBytes(32);
+
+            return CryptographicOperations.FixedTimeEquals(hashOriginal, hashDigitado);
+        }
+
         public void AtualizarPropriedades(string nomeAtualizado, string emailAtualizado, string senhaAtualizada)
         {
             ValidaNome(nomeAtualizado);
