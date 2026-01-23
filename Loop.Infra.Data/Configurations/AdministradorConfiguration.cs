@@ -8,7 +8,8 @@ namespace Loop.Infra.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<Administrador> builder)
         {
-            builder.ToTable("Administrador");       
+            builder.ToTable("Administrador");
         }
+
     }
 }
