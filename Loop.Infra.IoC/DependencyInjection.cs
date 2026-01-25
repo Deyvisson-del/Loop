@@ -9,7 +9,7 @@ namespace Loop.Infra.IoC
 {
     public static class DependencyInjection
     {
-        public static IServiceCollection AddInfraestructure(this  IServiceCollection services, string connectionString)
+        public static IServiceCollection AddInfraestructure(this IServiceCollection services, string connectionString)
         {
             services.AddDbContext<Contexto>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
@@ -17,7 +17,11 @@ namespace Loop.Infra.IoC
             services.AddScoped<IEstagiarioRepository, EstagiarioRepository>();
 
 
-            services.AddScoped<CriarEstagiarioUseCases>();
+
+            services.AddScoped<CriarEstagiarioUseCase>();
+            services.AddScoped<BuscarEstagiarioUseCase>();
+
+
             return services;
         }
     }
