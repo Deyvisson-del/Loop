@@ -10,8 +10,8 @@ namespace Loop.Domain.Requests
         public DateTime Data { get; set; }
         public TimeSpan? HoraChegada { get; set; }
         public TimeSpan? HoraSaida { get; set; }
-        public TimeSpan? HorasTrabalhadas{get; set;}
-        public Frequencia(){}
+        public TimeSpan? HorasTrabalhadas { get; set; }
+        public Frequencia() { }
 
 
         public Frequencia(int estagiarioId, DateTime data)
