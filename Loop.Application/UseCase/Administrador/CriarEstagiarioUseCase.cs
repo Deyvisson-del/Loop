@@ -2,11 +2,11 @@
 
 namespace Loop.Application.UseCase.Administrador
 {
-    public class CriarEstagiarioUseCases
+    public class CriarEstagiarioUseCase
     {
         private readonly IAdministradorRepository _administradorRepository;
 
-        public CriarEstagiarioUseCases(IAdministradorRepository administradorRepository)
+        public CriarEstagiarioUseCase(IAdministradorRepository administradorRepository)
         {
             _administradorRepository = administradorRepository;
         }
