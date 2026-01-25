@@ -11,14 +11,26 @@ namespace Loop.Infra.Data.Repository
             _contextAdministrador = contextAdministrador;
         }
 
-        public void AtualizarEstagiario(int id)
+        public void AtualizarEstagiario(Estagiario estagiarioAtualizado)
         {
             throw new NotImplementedException();
         }
 
-        public void AtualizarGestor(int id)
+        public void AtualizarGestor(Gestor gestor)
         {
             throw new NotImplementedException();
+        }
+
+        public Gestor? BuscarGestorNome(string nomeGestor)
+        {
+            throw new NotImplementedException();
+            //var gestorBusca = _contextAdministrador.Gestores.Where(x => x.Nome == nomeGestor);
+            //if (gestorBusca == null)
+            //{
+            //    throw new Exception("Gestor não encontrado");
+            //}
+
+            //return gestorBusca;
         }
 
         public Estagiario? ConsultaEstagiarioNome(string nome)
@@ -28,7 +40,6 @@ namespace Loop.Infra.Data.Repository
 
             return estagiarioBuscado;
         }
-
 
         public Estagiario? ConsultarEstagiarioId(int id)
         {
@@ -75,7 +86,6 @@ namespace Loop.Infra.Data.Repository
         public void DeletarEstagiario(int id)
         {
             var estagiarioRemovido = ConsultarEstagiarioId(id);
-
             if (estagiarioRemovido == null) throw new Exception("ID inválido ou Id não corresponde a nenhum Estagiario");
 
             _contextAdministrador.Estagiarios.Remove(estagiarioRemovido);
@@ -85,7 +95,6 @@ namespace Loop.Infra.Data.Repository
         public void DeletarGestor(int id)
         {
             var gestorRemovido = ConsultarGestorId(id);
-
             if (gestorRemovido == null) throw new Exception("ID inválido ou ID não corresponde a nenhum Gestor");
 
             _contextAdministrador.Gestores.Remove(gestorRemovido);
