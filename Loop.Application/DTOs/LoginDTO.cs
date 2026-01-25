@@ -7,7 +7,7 @@
 
         public LoginDTO(string emailDTO, string senhaDTO)
         {
-            
+
         }
     }
 }
