@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Loop.Domain.Entities
+﻿namespace Loop.Domain.Entities
 {
-    internal interface IGestorRepository
+    public interface IGestorRepository
     {
+        void CriarEstagiario(Estagiario estagiario);
+        void BuscarListaEstagiario();
+        Estagiario? BuscarIdEstagiario(int id);
+        Estagiario? BuscarNomeEstagiario(string nome);
+        void AtualizarEstagiario(Estagiario estagiario);
+        void DeletarEstagiario(int id);
     }
 }

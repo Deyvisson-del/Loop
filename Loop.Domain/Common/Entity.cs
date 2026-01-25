@@ -2,11 +2,11 @@
 {
     public abstract class Entity
     {
-     public int Id { get; protected set; }
+        public int Id { get; protected set; }
 
         protected Entity()
         {
-           Id = 0; 
+            Id = 0;
         }
     }
 }
