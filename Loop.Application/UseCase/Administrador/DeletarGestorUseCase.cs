@@ -2,16 +2,16 @@
 
 namespace Loop.Application.UseCase.Administrador
 {
-    public class CriarEstagiarioUseCase
+    public class DeletarGestorUseCase
     {
         private readonly IAdministradorRepository _administradorRepository;
-        public CriarEstagiarioUseCase(IAdministradorRepository administradorRepository)
+        public DeletarGestorUseCase(IAdministradorRepository administradorRepository)
         {
             _administradorRepository = administradorRepository;
         }
-        public void Executar(Estagiario estagiario)
+        public void Executar(int id)
         {
-            _administradorRepository.CriarEstagiario(estagiario);
+            _administradorRepository.DeletarGestor(id);
         }
     }
 }

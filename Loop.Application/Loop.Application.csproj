@@ -20,4 +20,9 @@
     <ProjectReference Include="..\Loop.Domain\Loop.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="UseCase\Estagiario\" />
+    <Folder Include="UseCase\Gestor\" />
+  </ItemGroup>
+
 </Project>
