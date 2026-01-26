@@ -26,7 +26,7 @@ namespace Loop.Domain.Entities
                 throw new ArgumentNullException("A nome não pode ser nulo ou vazio !!!");
         }
 
-        protected Usuario(){}
+        protected Usuario() { }
         protected void ValidaEmail(string email)
         {
             if (string.IsNullOrEmpty(email) || string.IsNullOrWhiteSpace(email))

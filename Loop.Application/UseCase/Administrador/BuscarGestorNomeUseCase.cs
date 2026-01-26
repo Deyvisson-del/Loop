@@ -2,18 +2,16 @@
 
 namespace Loop.Application.UseCase.Administrador
 {
-    public class CriarEstagiarioUseCases
+    public class BuscarGestorNomeUseCase
     {
         private readonly IAdministradorRepository _administradorRepository;
-
-        public CriarEstagiarioUseCases(IAdministradorRepository administradorRepository)
+        public BuscarGestorNomeUseCase(IAdministradorRepository administradorRepository)
         {
             _administradorRepository = administradorRepository;
         }
-
-        public void Executar(Estagiario estagiario)
+        public IEnumerable<Loop.Domain.Entities.Gestor> Executar(string nome)
         {
-            _administradorRepository.CriarEstagiario(estagiario);
+            return _administradorRepository.BuscarGestorNome(nome);
         }
     }
 }

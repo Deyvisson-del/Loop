@@ -12,10 +12,11 @@ namespace Loop.Infra.Data.Context
         public DbSet<Gestor> Gestores { get; set; }
         public DbSet<Frequencia> Frequencias { get; set; }
         public DbSet<Solicitacao> Solicitacoes { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(Contexto).Assembly);
             base.OnModelCreating(modelBuilder);
-        }   
+        }
     }
 }

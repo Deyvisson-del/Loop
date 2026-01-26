@@ -10,6 +10,5 @@ namespace Loop.Infra.Data.Configurations
         {
             builder.ToTable("Administrador");
         }
-
     }
 }

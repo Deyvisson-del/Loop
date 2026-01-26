@@ -11,5 +11,6 @@ namespace Loop.Domain.Entities
     {
         void BaterEntrada(Frequencia frequencia);
         void BaterSaida(Frequencia frequencia);
+        void SolicitarAjuste(Solicitacao solicitacao);
     }
 }

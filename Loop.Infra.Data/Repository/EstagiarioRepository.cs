@@ -14,5 +14,11 @@ namespace Loop.Infra.Data.Repository
         {
             throw new NotImplementedException();
         }
+
+        public void SolicitarAjuste(Solicitacao solicitacao)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }
