@@ -17,30 +17,37 @@ namespace Loop.Infra.Data.Repository
             _contextGestor.SaveChanges();
         }
 
-        public void BuscarListaEstagiario()
+        public IEnumerable<Estagiario> BuscarListaEstagiario()
         {
-            throw new NotImplementedException();
+            return _contextGestor.Estagiarios.ToList();
         }
 
-        public void AtualizarEstagiario(Estagiario estagiario)
+        public void AtualizarEstagiario(Estagiario estagiarioModificado)
         {
-            throw new NotImplementedException();
+            _contextGestor.Estagiarios.Update(estagiarioModificado);
+            _contextGestor.SaveChanges();
         }
 
-        public Estagiario? BuscarNomeEstagiario(string nome)
+        public IEnumerable<Estagiario> BuscarNomeEstagiario(string nomeBusca)
         {
-            throw new NotImplementedException();
+            var estagiarioExiste = _contextGestor.Estagiarios.Where(x => x.Nome == nomeBusca);
+            if (estagiarioExiste == null) throw new Exception("Estagiário não encontrado ");
+            return estagiarioExiste;
         }
 
         public Estagiario? BuscarIdEstagiario(int id)
         {
-            throw new NotImplementedException();
+            var gestorExiste = _contextGestor.Estagiarios.Find(id);
+            if ( gestorExiste == null)  throw new Exception("Id não encontrado");
+            return gestorExiste;
         }
 
         public void DeletarEstagiario(int id)
         {
-            throw new NotImplementedException();
+            var estagiarioRemovido = BuscarIdEstagiario(id);
+            if (estagiarioRemovido == null) throw new Exception("ID inválido ou Id não corresponde a nenhum Estagiario");
+            _contextGestor.Estagiarios.Remove(estagiarioRemovido);
+            _contextGestor.SaveChanges();
         }
-
     }
 }
