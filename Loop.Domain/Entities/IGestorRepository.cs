@@ -3,9 +3,9 @@
     public interface IGestorRepository
     {
         void CriarEstagiario(Estagiario estagiario);
-        void BuscarListaEstagiario();
+        IEnumerable<Estagiario> BuscarListaEstagiario();
         Estagiario? BuscarIdEstagiario(int id);
-        Estagiario? BuscarNomeEstagiario(string nome);
+        IEnumerable<Estagiario> BuscarNomeEstagiario(string nomeBusca);
         void AtualizarEstagiario(Estagiario estagiario);
         void DeletarEstagiario(int id);
     }
