@@ -15,12 +15,20 @@ namespace Loop.Infra.IoC
 
             services.AddScoped<IAdministradorRepository, AdministradorRepository>();
             services.AddScoped<IEstagiarioRepository, EstagiarioRepository>();
-
+            services.AddScoped<IGestorRepository, GestorRepository>();
 
 
             services.AddScoped<CriarEstagiarioUseCase>();
-            services.AddScoped<BuscarEstagiarioUseCase>();
+            services.AddScoped<CriarGestorUseCase>();
 
+            services.AddScoped<BuscarEstagiarioNomeUseCase>();
+            services.AddScoped<BuscarGestorNomeUseCase>();
+
+            services.AddScoped<BuscarEstagiarioIdUseCase>();
+            services.AddScoped<BuscarGestorIdUseCase>();
+
+            services.AddScoped<DeletarEstagiarioUseCase>();
+            services.AddScoped<DeletarGestorUseCase>();
 
             return services;
         }
