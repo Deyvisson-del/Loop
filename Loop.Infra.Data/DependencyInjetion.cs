@@ -13,6 +13,8 @@ namespace Loop.Infra.Data
             services.AddDbContext<Contexto>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
             services.AddScoped<IEstagiarioRepository, EstagiarioRepository>();
             services.AddScoped<IAdministradorRepository, AdministradorRepository>();
+
+
         }
     }
 }
