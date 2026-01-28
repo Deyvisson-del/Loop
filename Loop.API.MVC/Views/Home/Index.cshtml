@@ -3,10 +3,11 @@
 }
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="utf-8" />
     <title>Loop - Bem-vindo</title>
-
+    <link rel="icon" href="~/images/faviconroxo.png" type="image/png">
     <style>
         body {
             margin: 0;
@@ -20,6 +21,8 @@
         }
 
         .container {
+            @* height: 50%;
+            width: 25%; *@
             text-align: center;
         }
 
@@ -48,6 +51,7 @@
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
+            width: 100%;
         }
 
         .footer {
@@ -57,25 +61,33 @@
         .footer img {
             width: 140px;
         }
+
+        .titulo {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
     </style>
 </head>
+
 <body>
 
     <div class="container">
-        <h1>Bem-vindo ao</h1>
+        <h1 class="titulo">Bem-vindo ao</h1>
 
-        <img src="/images/logo-loop.png" alt="Loop" class="logo" />
+        <img src="~/images/marca.png" alt="Loop-logo" class="logo" />
 
         <p>O novo sistema de pontos<br />para os estagiários da SECTI!</p>
 
-        @* <a href="/Account/Login">
+        <a href="/Account/Login">
             <button class="btn">Entrar</button>
-        </a> *@
+        </a>
 
         <div class="footer">
-            <img src="/images/logo-governo.png" alt="Governo" />
+            <img src="/images/LogoGoverno.png" alt="Governo" />
         </div>
     </div>
 
 </body>
+
 </html>
