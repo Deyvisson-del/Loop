@@ -2,10 +2,15 @@
 {
     public class EstagiarioDTO
     {
-        public int Id { get; protected set; }
-        public string Nome { get; protected set; } 
-        public string Email { get; protected set; }
-        public string Senha { get; protected set; } 
+        public string Nome;
+        public string Email;
+        public string Senha;
 
+        public EstagiarioDTO(string nome, string email, string senha)
+        {
+            Nome = nome;
+            Email = email;
+            Senha = senha;
+        }
     }
 }
