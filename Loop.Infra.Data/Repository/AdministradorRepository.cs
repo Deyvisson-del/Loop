@@ -50,7 +50,7 @@ namespace Loop.Infra.Data.Repository
         {
             var gestorBanco = _contextAdministrador.Gestores.Find(id);
             if (gestorBanco == null) throw new Exception("Gestor não encontrado");
-            
+
             return _contextAdministrador.Gestores.Find(id);
         }
 

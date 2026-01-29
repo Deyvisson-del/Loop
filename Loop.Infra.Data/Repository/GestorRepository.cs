@@ -38,7 +38,7 @@ namespace Loop.Infra.Data.Repository
         public Estagiario? BuscarIdEstagiario(int id)
         {
             var gestorExiste = _contextGestor.Estagiarios.Find(id);
-            if ( gestorExiste == null)  throw new Exception("Id não encontrado");
+            if (gestorExiste == null) throw new Exception("Id não encontrado");
             return gestorExiste;
         }
 

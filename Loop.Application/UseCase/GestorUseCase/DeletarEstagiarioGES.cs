@@ -2,10 +2,10 @@ using Loop.Domain.Entities;
 
 namespace Loop.Application.UseCase.Gestor
 {
-    public class DeletarEstagiarioUseCase
+    public class DeletarEstagiarioGES
     {
         private readonly IGestorRepository _gestorRepository;
-        public DeletarEstagiarioUseCase(IGestorRepository gestorRepository)
+        public DeletarEstagiarioGES(IGestorRepository gestorRepository)
         {
             _gestorRepository = gestorRepository;
         }

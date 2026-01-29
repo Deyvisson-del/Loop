@@ -2,16 +2,16 @@ using Loop.Domain.Entities;
 
 namespace Loop.Application.UseCase.Gestor
 {
-    public class AtualizarEstagiarioUseCase
+    public class BuscarIdEstagiarioGES
     {
         private readonly IGestorRepository _gestorRepository;
-        public AtualizarEstagiarioUseCase(IGestorRepository gestorRepository)
+        public BuscarIdEstagiarioGES(IGestorRepository gestorRepository)
         {
             _gestorRepository = gestorRepository;
         }
-        public void Execute(Estagiario estagiario)
+        public Domain.Entities.Estagiario? Executar(int id)
         {
-            _gestorRepository.AtualizarEstagiario(estagiario);
+            return _gestorRepository.BuscarIdEstagiario(id);
         }
     }
 }

@@ -5,25 +5,23 @@ namespace Loop.Domain.Requests
     public class Frequencia
     {
         public int Id { get; set; }
-        public int EstagiarioId { get; set; }
-        public Estagiario estagiario { get; set; }
+        public Estagiario? estagiario { get; set; }
         public DateTime Data { get; set; }
+        public int? EstagiarioId { get; set; }
         public TimeSpan? HoraChegada { get; set; }
         public TimeSpan? HoraSaida { get; set; }
         public TimeSpan? HorasTrabalhadas { get; set; }
         public Frequencia() { }
-
-
+ 
         public Frequencia(int estagiarioId, DateTime data)
         {
             EstagiarioId = estagiarioId;
             Data = data.Date;
-            //HoraChegada = TimeSpan.
         }
 
         public void RegistrarEntrada(DateTime entrada)
         {
-            if (HoraChegada != null) throw new InvalidOperationException("Entrada já registrada. ");
+            if (HoraChegada != null) throw new InvalidOperationException("Entrada já registrada.");
 
             Data = entrada.Date;
             HoraChegada = entrada.TimeOfDay;
