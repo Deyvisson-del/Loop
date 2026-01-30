@@ -1,4 +1,17 @@
+using Loop.Infra.Data.Context;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<Contexto>(options =>
+{
+    options.UseMySql(
+        builder.Configuration.GetConnectionString("DefaultConnection"),
+         ServerVersion.AutoDetect(
+            builder.Configuration.GetConnectionString("DefaultConnection"))
+        );
+});
+
 
 builder.Services.AddControllersWithViews();
 
