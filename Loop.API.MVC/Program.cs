@@ -1,21 +1,25 @@
+using Loop.Infra.Data;
 using Loop.Infra.Data.Context;
+using Loop.Infra.IoC;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<Contexto>(options =>
-{
-    options.UseMySql(
-        builder.Configuration.GetConnectionString("DefaultConnection"),
-         ServerVersion.AutoDetect(
-            builder.Configuration.GetConnectionString("DefaultConnection"))
-        );
-});
+var connectionString = builder.Configuration.
+    GetConnectionString("DefaultConnection")
+    ?? throw new InvalidOperationException("Connection string 'DefaultConnection' não encontrada.");
 
 
+builder.Services.AddInfraestructure(connectionString);
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<Contexto>();
+    dbContext.Database.Migrate();
+}
 
 
 if (!app.Environment.IsDevelopment())

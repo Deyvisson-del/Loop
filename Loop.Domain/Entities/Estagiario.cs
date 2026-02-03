@@ -4,7 +4,10 @@ namespace Loop.Domain.Entities
 {
     public class Estagiario : Usuario
     {
-        public Estagiario(string name, string email, string senha) : base(name, email, senha) { }
+        public Estagiario(string nome, string email, string senha) : base(nome, email) {
+
+            DefinirSenha(senha);
+        }
         public Estagiario() { }
 
         public ICollection<Frequencia> frequencias { get; set; } = new List<Frequencia>();

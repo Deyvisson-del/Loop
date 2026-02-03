@@ -76,18 +76,14 @@ namespace Loop.Infra.Data.Repository
             _contextAdministrador.SaveChanges();
         }
 
-        public void DeletarEstagiario(int id)
+        public void DeletarEstagiario(Estagiario estagiarioRemovido)
         {
-            var estagiarioRemovido = BuscarEstagiarioId(id);
-            if (estagiarioRemovido == null) throw new Exception("ID inválido ou Id não corresponde a nenhum Estagiario");
             _contextAdministrador.Estagiarios.Remove(estagiarioRemovido);
             _contextAdministrador.SaveChanges();
         }
 
-        public void DeletarGestor(int id)
+        public void DeletarGestor(Gestor gestorRemovido)
         {
-            var gestorRemovido = BuscarGestorId(id);
-            if (gestorRemovido == null) throw new Exception("ID inválido ou ID não corresponde a nenhum Gestor");
             _contextAdministrador.Gestores.Remove(gestorRemovido);
             _contextAdministrador.SaveChanges();
         }
