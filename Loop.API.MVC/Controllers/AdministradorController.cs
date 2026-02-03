@@ -64,16 +64,18 @@ namespace Loop.API.MVC.Controllers
 
         [HttpDelete]
         [Route("DeletarEstagiario/{id}")]
-        public void DeletarEstagiario(int id)
+        public IActionResult DeletarEstagiario(int id)
         {
             _administradorService.DeletarEstagiario(id);
+            return Ok("Estagiário Deletado...");
         }
 
         [HttpDelete]
         [Route("DeletarGestor/{id}")]
-        public void DeletarGestor(int id)
+        public IActionResult DeletarGestor(int id)
         {
             _administradorService.DeletarGestor(id);
+            return Ok("Gestor Deletado...");
         }
 
     }
