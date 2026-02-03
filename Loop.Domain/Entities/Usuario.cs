@@ -10,20 +10,24 @@ namespace Loop.Domain.Entities
         public string Email { get; protected set; } = string.Empty;
         public string Senha { get; protected set; } = string.Empty;
 
-        protected Usuario(string nome, string email, string senha)
+        protected Usuario(string nome, string email)
         {
             ValidaNome(nome);
             ValidaEmail(email);
-            EncriptadorDeSenha(senha);
             Nome = nome;
             Email = email;
-            Senha = senha;
         }
 
         protected void ValidaNome(string nome)
         {
             if (string.IsNullOrEmpty(nome) || string.IsNullOrWhiteSpace(nome))
                 throw new ArgumentNullException("A nome não pode ser nulo ou vazio !!!");
+        }
+
+        public void DefinirSenha(string senhaPura)
+        {
+            ValidaSenha(senhaPura);
+            Senha = EncriptadorDeSenha(senhaPura);
         }
 
         protected Usuario() { }
@@ -59,7 +63,6 @@ namespace Loop.Domain.Entities
 
             Senha = EncriptadorDeSenha(senhaPura);
         }
-
 
         public bool VerificacaoSenha(string senhaPura)
         {

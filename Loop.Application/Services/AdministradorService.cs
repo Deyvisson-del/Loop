@@ -67,22 +67,14 @@ namespace Loop.Application.Services
 
         public void DeletarEstagiario(int id)
         {
-            try
-            {
-                _administradorRepository.BuscarEstagiarioId(id);
-                _administradorRepository.DeletarEstagiario(id);
-
-            }
-            catch (Exception e)
-            {
-                throw new ArgumentException(e.Message);
-            }
-
+            Estagiario estagiarioRemovido = BuscarEstagiarioPorId(id) ?? throw new Exception("ID inválido ou Id não corresponde a nenhum Estagiario");
+            _administradorRepository.DeletarEstagiario(estagiarioRemovido);
         }
 
         public void DeletarGestor(int id)
         {
-            _administradorRepository.DeletarGestor(id);
+            Gestor gestorRemovido = BuscarGestorPorId(id) ?? throw new Exception("ID inválido ou Id não corresponde a nenhum Gestor");
+            _administradorRepository.DeletarGestor(gestorRemovido);
         }
 
     }

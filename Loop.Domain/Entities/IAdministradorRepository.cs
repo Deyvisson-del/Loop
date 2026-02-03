@@ -12,7 +12,7 @@
         IEnumerable<Gestor> BuscarGestorNome(string nome);
         void AtualizarEstagiario(Estagiario estagiarioAtualizado);
         void AtualizarGestor(Gestor gestorAtualizado);
-        void DeletarEstagiario(int id);
-        void DeletarGestor(int id);
+        void DeletarEstagiario(Estagiario estagiario);
+        void DeletarGestor(Gestor gestor);
     }
 }
