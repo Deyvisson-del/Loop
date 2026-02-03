@@ -1,4 +1,5 @@
-﻿using Loop.Domain.Entities;
+﻿using Loop.Application.Services;
+using Loop.Domain.Entities;
 using Loop.Infra.Data.Context;
 using Loop.Infra.Data.Repository;
 using Microsoft.EntityFrameworkCore;
@@ -13,7 +14,7 @@ namespace Loop.Infra.Data
             services.AddDbContext<Contexto>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
             services.AddScoped<IEstagiarioRepository, EstagiarioRepository>();
             services.AddScoped<IAdministradorRepository, AdministradorRepository>();
-
+            services.AddScoped<IGestorRepository, GestorRepository>();
 
         }
     }
