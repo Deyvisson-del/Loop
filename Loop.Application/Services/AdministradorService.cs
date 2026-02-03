@@ -45,6 +45,20 @@ namespace Loop.Application.Services
             }
         }
 
+        public Gestor? BuscarGestorPorId(int id)
+        {
+            try
+            {
+                var gestorEncontrado = _administradorRepository.BuscarGestorId(id);
+                return gestorEncontrado;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                throw new Exception(ex.Message);
+            }
+        }
+
         public IEnumerable<Estagiario> BuscarNomeEstagiario(string nome)
         {
             return _administradorRepository.BuscarEstagiarioNome(nome);
