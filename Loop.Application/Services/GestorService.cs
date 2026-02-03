@@ -4,9 +4,9 @@ namespace Loop.Application.Services
 {
     public class GestorService
     {
-        private readonly GestorService _gestorRepository;
+        private readonly IGestorRepository _gestorRepository;
 
-        public GestorService(GestorService gestorService)
+        public GestorService(IGestorRepository gestorService)
         {
             _gestorRepository = gestorService;
         }

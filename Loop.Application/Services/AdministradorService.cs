@@ -1,6 +1,4 @@
-﻿using Loop.Application.DTOs;
-using Loop.Application.UseCase.EstagiarioUseCase;
-using Loop.Domain.Entities;
+﻿using Loop.Domain.Entities;
 
 namespace Loop.Application.Services
 {
@@ -69,7 +67,17 @@ namespace Loop.Application.Services
 
         public void DeletarEstagiario(int id)
         {
-            _administradorRepository.DeletarEstagiario(id);
+            try
+            {
+                _administradorRepository.BuscarEstagiarioId(id);
+                _administradorRepository.DeletarEstagiario(id);
+
+            }
+            catch (Exception e)
+            {
+                throw new ArgumentException(e.Message);
+            }
+
         }
 
         public void DeletarGestor(int id)

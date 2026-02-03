@@ -1,12 +1,13 @@
-﻿using Loop.Domain.Requests;
+﻿using Loop.Domain.Entities;
+using Loop.Domain.Requests;
 
 namespace Loop.Application.Services
 {
     public class EstagiarioService
     {
-        private readonly EstagiarioService _estagiarioRepository;
+        private readonly IEstagiarioRepository _estagiarioRepository;
 
-        public EstagiarioService(EstagiarioService estagiarioService)
+        public EstagiarioService(IEstagiarioRepository estagiarioService)
         {
             _estagiarioRepository = estagiarioService;
         }
