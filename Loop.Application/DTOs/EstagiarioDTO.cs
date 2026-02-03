@@ -1,16 +1,16 @@
 ﻿namespace Loop.Application.DTOs
 {
-    public class EstagiarioDTO
+    public class UserDTO
     {
-        public string Nome;
-        public string Email;
-        public string Senha;
+        public string Nome { get; set; }
+        public string Email { get; set; }
+        public string Senha { get; set; }
 
-        public EstagiarioDTO(string nome, string email, string senha)
+        public UserDTO()
         {
-            Nome = nome;
-            Email = email;
-            Senha = senha;
+            Nome = string.Empty;
+            Email = string.Empty;
+            Senha = string.Empty;
         }
     }
 }
