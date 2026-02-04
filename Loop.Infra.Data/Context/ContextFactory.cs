@@ -7,7 +7,7 @@ namespace Loop.Infra.Data.Context
     {
         public Contexto CreateDbContext(string[] args)
         {
-            var conectionString = "server=localhost;Port=3306;user=root;password=root;database=Banco_Loop;";
+            var conectionString = "server=localhost;Port=3306;user=root;password=root;database=Banco_Loop_Teste;";
             var optionBuilder = new DbContextOptionsBuilder<Contexto>();
 
             optionBuilder.UseMySql(conectionString, ServerVersion.AutoDetect(conectionString));

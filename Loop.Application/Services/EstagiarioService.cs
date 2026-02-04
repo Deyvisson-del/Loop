@@ -23,7 +23,7 @@ namespace Loop.Application.Services
         public void BaterSaida()
         {
             Frequencia frequencia = new Frequencia(
-                    
+                    //frequencia.Data = DateTime.Now()
                 );   
             _estagiarioRepository.BaterSaida(frequencia);
         }
