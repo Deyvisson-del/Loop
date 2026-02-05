@@ -10,7 +10,6 @@ namespace Loop.API.MVC.Controllers
     public class EstagiarioController : Controller
     {
         private readonly EstagiarioService _estagiarioService;
-
         public EstagiarioController(EstagiarioService estagiarioService)
         {
             _estagiarioService = estagiarioService;
