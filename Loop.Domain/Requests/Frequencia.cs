@@ -1,5 +1,4 @@
 ﻿using Loop.Domain.Entities;
-
 namespace Loop.Domain.Requests
 {
     public class Frequencia
@@ -12,38 +11,29 @@ namespace Loop.Domain.Requests
         public TimeSpan? HoraSaida { get; set; }
         public TimeSpan? HorasTrabalhadas { get; set; }
         public Frequencia() { }
-
-        public Frequencia(Estagiario estagiario, DateTime data, int estagiarioId, TimeSpan horaChegada, TimeSpan horaSaida, TimeSpan horasTrabalhaadas)
+        public Frequencia(int estagiarioId, DateTime entrada)
         {
-            Estagiario = estagiario;
-            Data = data;
             EstagiarioId = estagiarioId;
-            HoraChegada = horaChegada;
-            HoraSaida = horaSaida;
-            HorasTrabalhadas = horasTrabalhaadas;
+            HoraChegada = new TimeSpan(entrada.Hour, entrada.Minute, entrada.Second);
         }
-
         public void RegistrarEntrada(DateTime entrada)
         {
+            //if (entrada.Date != Data) throw new InvalidOperationException("A entrada deve ser no mesmo dia");
             if (HoraChegada != null) throw new InvalidOperationException("Entrada já registrada.");
-
-            Data = entrada.Date;
-            HoraChegada = entrada.TimeOfDay;
+            HoraChegada = new TimeSpan(entrada.Hour, entrada.Minute, entrada.Second);
         }
-
         public void RegistrarSaida(DateTime saida)
         {
             if (HoraChegada == null) throw new InvalidOperationException("Não e possivel registrar uma saída sem entrada.");
+            if (saida.Date != Data) throw new InvalidOperationException("A saída deve ser no mesmo dia frequência.");
             if (HoraSaida != null) throw new InvalidOperationException("Saída já registrada.");
-            HoraSaida = saida.TimeOfDay;
-
+            HoraSaida = new TimeSpan(saida.Hour, saida.Minute, saida.Second);
             CalcularHorasTrabalhadas();
         }
         public void AjustarPonto(TimeSpan novaEntrada, TimeSpan novaSaida)
         {
             HoraChegada = novaEntrada;
             HoraSaida = novaSaida;
-
             CalcularHorasTrabalhadas();
         }
         private void CalcularHorasTrabalhadas()

@@ -15,10 +15,11 @@ namespace Loop.Infra.IoC
             services.AddScoped<IAdministradorRepository, AdministradorRepository>();
             services.AddScoped<IEstagiarioRepository, EstagiarioRepository>();
             services.AddScoped<IGestorRepository, GestorRepository>();
+            services.AddScoped<IFrequenciaRepository, FrequenciaRepository>();
             services.AddScoped<AdministradorService>();
             services.AddScoped<EstagiarioService>();
             services.AddScoped<GestorService>();
-
+            services.AddScoped<FrequenciaService>();
             return services;
         }
     }

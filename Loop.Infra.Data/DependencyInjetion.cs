@@ -15,7 +15,7 @@ namespace Loop.Infra.Data
             services.AddScoped<IEstagiarioRepository, EstagiarioRepository>();
             services.AddScoped<IAdministradorRepository, AdministradorRepository>();
             services.AddScoped<IGestorRepository, GestorRepository>();
-
+            services.AddScoped<IFrequenciaRepository, FrequenciaRepository>();
         }
     }
 }
