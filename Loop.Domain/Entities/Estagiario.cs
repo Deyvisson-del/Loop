@@ -6,7 +6,6 @@ namespace Loop.Domain.Entities
     {
         public Estagiario(string nome, string email, string senha) : base(nome, email)
         {
-
             DefinirSenha(senha);
         }
         public Estagiario() { }
