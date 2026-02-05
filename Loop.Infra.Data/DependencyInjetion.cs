@@ -1,5 +1,5 @@
 ﻿using Loop.Application.Services;
-using Loop.Domain.Entities;
+using Loop.Domain.Interfaces;
 using Loop.Infra.Data.Context;
 using Loop.Infra.Data.Repository;
 using Microsoft.EntityFrameworkCore;

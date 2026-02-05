@@ -1,4 +1,6 @@
-﻿namespace Loop.Domain.Entities
+﻿using Loop.Domain.Entities;
+
+namespace Loop.Domain.Interfaces
 {
     public interface IAdministradorRepository
     {

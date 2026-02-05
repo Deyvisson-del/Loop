@@ -2,8 +2,8 @@
 using Loop.Infra.Data.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Loop.Domain.Entities;
 using Loop.Application.Services;
+using Loop.Domain.Interfaces;
 
 namespace Loop.Infra.IoC
 {

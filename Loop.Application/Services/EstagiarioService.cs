@@ -1,4 +1,4 @@
-﻿using Loop.Domain.Entities;
+﻿using Loop.Domain.Interfaces;
 using Loop.Domain.Requests;
 
 namespace Loop.Application.Services
@@ -12,20 +12,14 @@ namespace Loop.Application.Services
             _estagiarioRepository = estagiarioService;
         }
 
-        public void BaterEntrada()
+        public void BaterEntrada(int estagiarioId, DateTime entrada)
         {
-            Frequencia frequencia = new Frequencia(
-                    
-                );   
-            _estagiarioRepository.BaterEntrada(frequencia);
+            
         }
 
         public void BaterSaida()
         {
-            Frequencia frequencia = new Frequencia(
-                    
-                );   
-            _estagiarioRepository.BaterSaida(frequencia);
+           
         }
 
         public void SolicitarAjuste(Solicitacao solicitacao)

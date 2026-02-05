@@ -5,7 +5,7 @@ namespace Loop.Domain.Requests
     public class Frequencia
     {
         public int Id { get; set; }
-        public Estagiario? estagiario { get; set; }
+        public Estagiario? Estagiario { get; set; }
         public DateTime Data { get; set; }
         public int? EstagiarioId { get; set; }
         public TimeSpan? HoraChegada { get; set; }
@@ -13,10 +13,14 @@ namespace Loop.Domain.Requests
         public TimeSpan? HorasTrabalhadas { get; set; }
         public Frequencia() { }
 
-        public Frequencia(int estagiarioId, DateTime data)
+        public Frequencia(Estagiario estagiario, DateTime data, int estagiarioId, TimeSpan horaChegada, TimeSpan horaSaida, TimeSpan horasTrabalhaadas)
         {
+            Estagiario = estagiario;
+            Data = data;
             EstagiarioId = estagiarioId;
-            Data = data.Date;
+            HoraChegada = horaChegada;
+            HoraSaida = horaSaida;
+            HorasTrabalhadas = horasTrabalhaadas;
         }
 
         public void RegistrarEntrada(DateTime entrada)

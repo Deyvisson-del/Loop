@@ -20,7 +20,7 @@ namespace Loop.API.MVC.Controllers
         [Route("/BaterEntrada")]
         public IActionResult BaterEntrada()
         {
-            _estagiarioService.BaterEntrada();
+            //_estagiarioService.BaterEntrada();
             return Ok("Registro entrada concluído");
         }
 
@@ -28,7 +28,7 @@ namespace Loop.API.MVC.Controllers
         [Route("/BaterSaida")]
         public IActionResult BaterSaida()
         {
-            _estagiarioService.BaterSaida();
+            //_estagiarioService.BaterSaida();
 
             return Ok("Registro entrada concluído");
         }

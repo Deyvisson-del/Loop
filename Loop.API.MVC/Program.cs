@@ -3,6 +3,8 @@ using Loop.Infra.Data.Context;
 using Loop.Infra.IoC;
 using Microsoft.EntityFrameworkCore;
 
+Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("pt-BR");
+
 var builder = WebApplication.CreateBuilder(args);
 
 var connectionString = builder.Configuration.

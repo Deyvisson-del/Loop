@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Loop.Domain.Entities
+namespace Loop.Domain.Interfaces
 {
     public interface IEstagiarioRepository
     {

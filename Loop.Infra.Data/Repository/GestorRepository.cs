@@ -1,5 +1,6 @@
 using Loop.Infra.Data.Context;
 using Loop.Domain.Entities;
+using Loop.Domain.Interfaces;
 
 namespace Loop.Infra.Data.Repository
 {
