@@ -29,7 +29,7 @@ namespace Loop.API.MVC.Controllers
         [Route("CriarGestor")]
         public IActionResult CriarGestor([FromBody] UserDTO userDTO)
         {
-            var gestor = new Gestor(userDTO.Nome, userDTO.Email, userDTO.Senha);
+            var gestor = new Domain.Entities.Gestor(userDTO.Nome, userDTO.Email, userDTO.Senha);
             _administradorService.CriarGestor(gestor);
             return CreatedAtAction(nameof(CriarEstagiario), new { id = gestor.Id }, gestor);
         }
@@ -43,7 +43,7 @@ namespace Loop.API.MVC.Controllers
 
         [HttpGet]
         [Route("ListarGestores")]
-        public IEnumerable<Gestor> ListarGestores()
+        public IEnumerable<Domain.Entities.Gestor> ListarGestores()
         {
             return _administradorService.ListaDeGestores();
         }
@@ -57,7 +57,7 @@ namespace Loop.API.MVC.Controllers
 
         [HttpGet]
         [Route("BuscarIdGestor/{id}")]
-        public Gestor? BuscarIdGestor(int id)
+        public Domain.Entities.Gestor? BuscarIdGestor(int id)
         {
             return _administradorService.BuscarGestorPorId(id);
         }

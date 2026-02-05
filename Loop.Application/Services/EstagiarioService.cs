@@ -12,13 +12,19 @@ namespace Loop.Application.Services
             _estagiarioRepository = estagiarioService;
         }
 
-        public void BaterEntrada(Frequencia frequencia)
+        public void BaterEntrada()
         {
+            Frequencia frequencia = new Frequencia(
+                    
+                );   
             _estagiarioRepository.BaterEntrada(frequencia);
         }
 
-        public void BaterSaida(Frequencia frequencia)
+        public void BaterSaida()
         {
+            Frequencia frequencia = new Frequencia(
+                    
+                );   
             _estagiarioRepository.BaterSaida(frequencia);
         }
 

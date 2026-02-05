@@ -1,0 +1,34 @@
+﻿@using Loop.API.MVC.Models.Auth
+@model LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+    Layout = "_Layout";
+}
+
+<link rel="stylesheet" href="~/css/login.css" />
+
+<div class="login-container">
+    <h1>Login</h1>
+    <p>Preencha suas informações para efetuar o login</p>
+
+    <form asp-action="Login" method="post">
+        <div class="form-group">
+            <label asp-for="Email"></label>
+            <input asp-for="Email" />
+            <span asp-validation-for="Email"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Senha"></label>
+            <input asp-for="Senha" />
+            <i class="fa-solid fa-eye" onclick="togglePassword()"></i>
+            <span asp-validation-for="Senha"></span>
+        </div>
+
+        <button type="submit">Entrar</button>
+    </form>
+</div>
+
+@section Scripts {
+    <script src="~/js/login.js"></script>
+}
