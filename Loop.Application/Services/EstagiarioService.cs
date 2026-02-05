@@ -14,12 +14,13 @@ namespace Loop.Application.Services
 
         public void BaterEntrada(int estagiarioId, DateTime entrada)
         {
-            
+            var data = entrada.Date;
+
         }
 
         public void BaterSaida()
         {
-           
+
         }
 
         public void SolicitarAjuste(Solicitacao solicitacao)
