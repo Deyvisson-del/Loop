@@ -4,9 +4,8 @@ namespace Loop.Domain.Requests
     public class Frequencia
     {
         public int Id { get; set; }
-        public Estagiario? Estagiario { get; set; }
-        public DateTime Data { get; set; }
         public int? EstagiarioId { get; set; }
+        public DateTime Data { get; set; } = DateTime.Now;
         public TimeSpan? HoraChegada { get; set; }
         public TimeSpan? HoraSaida { get; set; }
         public TimeSpan? HorasTrabalhadas { get; set; }
@@ -16,10 +15,11 @@ namespace Loop.Domain.Requests
             EstagiarioId = estagiarioId;
             HoraChegada = new TimeSpan(entrada.Hour, entrada.Minute, entrada.Second);
         }
+        #region Testes
         public void RegistrarEntrada(DateTime entrada)
         {
-            //if (entrada.Date != Data) throw new InvalidOperationException("A entrada deve ser no mesmo dia");
-            if (HoraChegada != null) throw new InvalidOperationException("Entrada já registrada.");
+            if (entrada.Date != Data.Date) throw new InvalidOperationException("A entrada deve ser no mesmo dia");
+            //if (HoraChegada != entrada.TimeOfDay) throw new InvalidOperationException("Entrada já registrada.");
             HoraChegada = new TimeSpan(entrada.Hour, entrada.Minute, entrada.Second);
         }
         public void RegistrarSaida(DateTime saida)
@@ -40,8 +40,10 @@ namespace Loop.Domain.Requests
         {
             if (HoraChegada != null && HoraSaida != null)
             {
-                HorasTrabalhadas = (TimeSpan)(HoraSaida.Value - HoraChegada);
+                HorasTrabalhadas = (TimeSpan)(HoraSaida - HoraChegada);
             }
         }
+        #endregion
+
     }
 }
