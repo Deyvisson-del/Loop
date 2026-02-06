@@ -4,10 +4,10 @@
     {
         public int EstagiarioId { get; set; }
         public DateTime? dataHoraEntrada { get; set; }
-        public FrequenciaDTO(int estagiarioId, DateTime? dateTime)
+        public FrequenciaDTO()
         {
-            EstagiarioId = estagiarioId;
-            dataHoraEntrada = dateTime;
+            EstagiarioId = default!;
+            dataHoraEntrada = default!;
         }
     }
 }
