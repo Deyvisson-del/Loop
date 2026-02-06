@@ -25,9 +25,21 @@ namespace Loop.Infra.Data.Repository
             _contexto.SaveChanges();
         }
 
+        public Frequencia? ConsultaId(int frequenciaId)
+        {
+            return _contexto.Frequencias.Find(frequenciaId);
+        }
+
+        public IEnumerable<Frequencia?> Listar()
+        {
+           return _contexto.Frequencias.ToList();
+        }
+
         public Frequencia? ObterPorEstagiarioEData(int estagiarioId, DateTime data)
         {
             return _contexto.Frequencias.FirstOrDefault(f => f.EstagiarioId == estagiarioId && f.Data == data.Date);
         }
+
+
     }
 }
